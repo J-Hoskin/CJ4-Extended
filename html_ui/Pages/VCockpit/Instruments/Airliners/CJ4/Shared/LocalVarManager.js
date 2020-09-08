@@ -7,32 +7,10 @@ class LocalVarManager {
     constructor() {
         this.updaters = [
             {
-                varName: "L:AVG_AIR_SPEED",
-                type: "number",
-                selector: this._averageAirSpeed,
-            },
-            // {
-            //     varName: "L:AVG_GROUND_SPEED",
-            //     type: "number",
-            //     selector: this._averageAirSpeed,
-            // },
-            // {
-            //     varName: "L:GROUND_DISTANCE",
-            //     type: "number",
-            //     selector: this._groundDistance,
-            // },
-            // {
-            //     varName: "L:AIR_DISTANCE",
-            //     type: "number",
-            //     selector: this._averageAirSpeed,
-            // },
-            {
                 varName: "L:TAKEOFF_TIME",
                 type: "seconds",
                 selector: this._updateTakeOffTime,
-            },
-
-
+            }
         ];
     }
 
@@ -51,15 +29,15 @@ class LocalVarManager {
     _updateTakeOffTime() {
         const takeOffTime = SimVar.GetSimVarValue("L:TAKEOFF_TIME", "seconds");
 
-        if(!takeOffTime){
+        if (takeOffTime == 0){
             const onGround = SimVar.GetSimVarValue("SIM ON GROUND", "Bool");
             const altitude = SimVar.GetSimVarValue("GPS POSITION ALT", "number");
-            if(!onGround && altitude > 3){
-                let currentTime = SimVar.GetSimVarValue("LOCAL TIME", "seconds");
-                if(!currentTime){
-                    currentTime = new Date().getTime();
+
+            if (!onGround && altitude > 3){
+                const localTime = SimVar.GetGlobalVarValue("LOCAL TIME", "seconds");
+                if(localTime){
+                    SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", localTime);
                 }
-                SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", currentTime);
             }
         }
 
@@ -67,31 +45,5 @@ class LocalVarManager {
         //     SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", undefined);
         // }
     }
-
-    _averageAirSpeed() {
-        const airSpeed = SimVar.GetSimVarValue("AIRSPEED TRUE", "number");
-        SimVar.SetSimVarValue("L:AVG_AIR_SPEED", "number", airSpeed);
-    }
-
-    // _groundDistance() {
-    //     const lastPos
-    //
-    //     const groundSpeed = SimVar.GetSimVarValue("GPS GROUND SPEED", "number");
-    //     let groundDistance = SimVar.GetSimVarValue("L:GROUND_DISTANCE", "number");
-    //     groundDistance +=  groundSpeed;
-    //     SimVar.SetSimVarValue("L:GROUND_DISTANCE", "number", groundDistance);
-    // }
-    //
-    // _averageGroundSpeed() {
-    //     const groundSpeed = SimVar.GetSimVarValue("GPS GROUND SPEED", "number");
-    //     const groundDistance = SimVar.GetSimVarValue("L:GROUND_DISTANCE", "number");
-    //
-    //     const averageGroundSpeed = groundDistance / groundSpeed;
-    //     let averageGroundDistance = SimVar.GetSimVarValue("L:GROUND_DISTANCE", "number");
-    //
-    //     s = d/t
-    //     groundDistance +=  groundSpeed;
-    //     SimVar.SetSimVarValue("L:GROUND_DISTANCE", "number", groundDistance);
-    // }
 
 }

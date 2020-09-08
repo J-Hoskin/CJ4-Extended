@@ -13,8 +13,9 @@ class CJ4_FMC extends FMCMainDisplay {
         this._hasReachedTopOfDescent = false;
         this._apCooldown = 500;
         this.dataUpdater = new LocalVarManager();
-        SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", undefined);
         SimVar.SetSimVarValue("L:STARTING_FUEL", "gallons", SimVar.GetSimVarValue("FUEL TOTAL QUANTITY", "gallons"));
+        SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", 0);
+
     }
     get templateID() { return "CJ4_FMC"; }
     connectedCallback() {
