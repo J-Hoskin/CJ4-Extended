@@ -2788,6 +2788,15 @@ class CJ4_NavBarContainer extends NavSystemElementContainer {
         this.rateElement = this.root.querySelector("#Rate_Value");
         this.diffElement = this.root.querySelector("#Diff_Value");
     }
+    getUTCTime() {
+        const value = SimVar.GetGlobalVarValue("ZULU TIME", "seconds");
+        if (value) {
+            const seconds = Number.parseInt(value);
+            const time = Utils.SecondsToDisplayTime(seconds, true, true, false);
+            return time.toString();
+        }
+        return "";
+    }
     onUpdate(_deltaTime) {
         super.onUpdate(_deltaTime);
         if (this.com1Element) {
@@ -2808,6 +2817,9 @@ class CJ4_NavBarContainer extends NavSystemElementContainer {
             let code = SimVar.GetSimVarValue("TRANSPONDER CODE:1", "number");
             if (code)
                 this.atc1Element.textContent = code.toString().padStart(4, "0");
+        }
+        if (this.utcElement){
+            this.utcElement.textContent = this.getUTCTime()
         }
     }
 }
