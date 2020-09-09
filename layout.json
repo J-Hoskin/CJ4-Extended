@@ -147,6 +147,17 @@
       "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/Shared/LocalVarManager.js",
       "size": 292508,
       "date": 132427734999577204
+    },
+    {
+      "path": "ModelBehaviorDefs/Asobo/Common/Passenger.xml",
+      "size": 662,
+      "date": 132427734999577205
+    },
+    {
+      "path": "ModelBehaviorDefs/Asobo/Common/Subtemplates/Passenger_Subtemplates.xml",
+      "size": 8498,
+      "date": 132427734999577206
     }
+
   ]
 }
