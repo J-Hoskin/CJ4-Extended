@@ -12,6 +12,10 @@ class LocalVarManager {
                 selector: this._updateTakeOffTime,
             }
         ];
+
+        // Setup variables
+        SimVar.SetSimVarValue("L:SEATBELT_LIGHTS_ON", "Bool", 1);
+        SimVar.SetSimVarValue("A:GLOBAL_SEATBELT_LIGHTS_ON", "Bool", 1);
     }
 
     update() {

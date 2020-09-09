@@ -288,6 +288,13 @@
 			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Recognition_Template">
 				<TOOLTIPID>%((A:LIGHT RECOGNITION, bool))%{if}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_ON %{else}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_OFF%{end}</TOOLTIPID>
 			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_SeatBelt_Template">
+				<ANIM_NAME>LIGHTING_Push_Light_SeatBelt</ANIM_NAME>
+				<PART_ID>LIGHTING_Push_Light_SeatBelt</PART_ID>
+				<NODE_ID>LIGHTING_Push_Light_SeatBelt</NODE_ID>
+				<ANIMTIP_0>SEATBELT_OFF</ANIMTIP_0>
+				<ANIMTIP_1>SEATBELT_ON</ANIMTIP_1>
+			</UseTemplate>
 		</Component>
 		<Component ID="LIGHTING_Knobs">
 			<UseTemplate Name="ASOBO_LIGHTING_Knob_Panel_Template">
@@ -724,6 +731,25 @@
 		<INIT_VALUE>50</INIT_VALUE>
 	</UseTemplate>
 
+	<UseTemplate Name="ASOBO_PASSENGER_Switch_Cabin_Air_Template">
+		<KNOB_NAME>PASSENGER_KNOB_CLIMATECONTROL_1</KNOB_NAME>
+		<ANIM_NAME>PASSENGER_KNOB_CLIMATECONTROL_1</ANIM_NAME>
+		<NODE_ID>PASSENGER_KNOB_CLIMATECONTROL_1</NODE_ID>
+		<NODE_NAME>PASSENGER_KNOB_CLIMATECONTROL_1</NODE_NAME>
+		<USE_KNOB_INTERACTION>True</USE_KNOB_INTERACTION>
+		<LEFTARROW>TurnLeft</LEFTARROW>
+		<RIGHTARROW>TurnRight</RIGHTARROW>
+		<ANIMTIP_0_ON_PERCENT>0</ANIMTIP_0_ON_PERCENT>
+		<ANIMTIP_1_ON_PERCENT>0.5</ANIMTIP_1_ON_PERCENT>
+		<ANIMTIP_2_ON_PERCENT>1</ANIMTIP_2_ON_PERCENT>
+		<ANIMTIP_0>Decrease Cabin Air Fan</ANIMTIP_0>
+		<ANIMTIP_1>Off</ANIMTIP_1>
+		<ANIMTIP_2>Increase Cabin Air Fan</ANIMTIP_2>
+		<ANIM_LAG>0</ANIM_LAG>
+		<INIT_VALUE>50</INIT_VALUE>
+		<KNOB_SPEED>50</KNOB_SPEED>
+	</UseTemplate>
+
 	<!--HEAT KNOBS-->
 	<UseTemplate Name="ASOBO_PASSENGER_Switch_Cabin_Heat_Template">
 		<KNOB_NAME>PASSENGER_KNOB_HEAT_1</KNOB_NAME>
@@ -874,17 +900,10 @@
 		<ANIM_NAME>KNOB_PRESSOURCE</ANIM_NAME>
 		<PERCENT>100</PERCENT>
 	</UseTemplate>
-	<UseTemplate Name="ASOBO_GT_Anim_Setup">
-		<ANIM_NAME>PASSENGER_KNOB_CLIMATECONTROL_1</ANIM_NAME>
-		<PERCENT>0</PERCENT>
-	</UseTemplate>
 </Component>
 <Component ID="TT_INOP">
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
 		<NODE_ID>LIGHTING_Push_Light_Safety</NODE_ID>
-	</UseTemplate>
-	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
-		<NODE_ID>LIGHTING_Push_Light_SeatBelt</NODE_ID>
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
 		<NODE_ID>push_pilot_DCP_CCPMENU</NODE_ID>

@@ -97,10 +97,6 @@
     },
 
 
-    
-
-
-
     {
       "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/CJ4_MFD.css",
       "size": 25256,
@@ -157,7 +153,25 @@
       "path": "ModelBehaviorDefs/Asobo/Common/Subtemplates/Passenger_Subtemplates.xml",
       "size": 8498,
       "date": 132427734999577206
+    },
+    {
+      "path": "ModelBehaviorDefs/Asobo/Common/Lighting.xml",
+      "size": 28526,
+      "date": 132427734996557378
+    },
+
+    {
+      "path": "SimObjects/Airplanes/Asobo_CJ4/model/CJ4_Cockpit.xml",
+      "size": 59812,
+      "date": 132427734996557379
+    },
+    {
+      "path": "ModelBehaviorDefs/Asobo/Common/Subtemplates/Lighting_Subtemplates.xml",
+      "size": 31844,
+      "date": 132427734996557380
     }
+
+
 
   ]
 }
