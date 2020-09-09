@@ -88,7 +88,7 @@ LIGHT_TYPE (text): light type (TAXI, STROBE, ..) in caps
 			</True>
 			<False>
 				<HELPID>HELPID_GAUGE_LIGHT_SWITCH_#LIGHT_TYPE#</HELPID>
-				
+
 			</False>
 		</Condition>
 		<Condition Check="KEY_ID_2">
@@ -118,9 +118,9 @@ LIGHT_TYPE (text): light type (TAXI, STROBE, ..) in caps
 				</SIMVAR_LEFT_SINGLE_CODE>
 			</False>
 		</Condition>
-		
+
 	</OverrideTemplateParameters>
-	
+
 	<Condition Valid="POTENTIOMETER">
 		<True>
 			<Switch>
@@ -264,7 +264,7 @@ LIGHT_TYPE (text): light type (TAXI, STROBE, ..) in caps
 				<Default>
 					<Component ID="#NODE_ID#" Node="#NODE_ID#">
 						<DefaultTemplateParameters>
-							<TOOLTIPID>%((A:LIGHT #LIGHT_TYPE#:#ID#, Bool))%{if}TT:COCKPIT.TOOLTIPS.#LIGHT_TYPE#_LIGHT_ON%{else}TT:COCKPIT.TOOLTIPS.#LIGHT_TYPE#_LIGHT_OFF%{end}</TOOLTIPID>
+							<TOOLTIPID>%((A:LIGHT RECOGNITION, bool))%{if}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_ON %{else}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_OFF%{end}</TOOLTIPID>
 						</DefaultTemplateParameters>
 						<Switch Param="INTERACTION">
 							<Case Value="Push">

@@ -289,11 +289,8 @@
 				<TOOLTIPID>%((A:LIGHT RECOGNITION, bool))%{if}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_ON %{else}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_OFF%{end}</TOOLTIPID>
 			</UseTemplate>
 			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_SeatBelt_Template">
-				<ANIM_NAME>LIGHTING_Push_Light_SeatBelt</ANIM_NAME>
-				<PART_ID>LIGHTING_Push_Light_SeatBelt</PART_ID>
-				<NODE_ID>LIGHTING_Push_Light_SeatBelt</NODE_ID>
-				<ANIMTIP_0>SEATBELT_OFF</ANIMTIP_0>
-				<ANIMTIP_1>SEATBELT_ON</ANIMTIP_1>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Safety_Template">
 			</UseTemplate>
 		</Component>
 		<Component ID="LIGHTING_Knobs">
@@ -902,9 +899,6 @@
 	</UseTemplate>
 </Component>
 <Component ID="TT_INOP">
-	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
-		<NODE_ID>LIGHTING_Push_Light_Safety</NODE_ID>
-	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
 		<NODE_ID>push_pilot_DCP_CCPMENU</NODE_ID>
 	</UseTemplate>

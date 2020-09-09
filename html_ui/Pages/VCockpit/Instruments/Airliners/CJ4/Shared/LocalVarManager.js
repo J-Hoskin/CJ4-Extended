@@ -14,8 +14,8 @@ class LocalVarManager {
         ];
 
         // Setup variables
-        SimVar.SetSimVarValue("L:SEATBELT_LIGHTS_ON", "Bool", 1);
-        SimVar.SetSimVarValue("A:GLOBAL_SEATBELT_LIGHTS_ON", "Bool", 1);
+        SimVar.SetSimVarValue("L:SEATBELT_LIGHT_ON", "Bool", 0);
+        SimVar.SetSimVarValue("L:SAFETY_LIGHT_ON", "Bool", 0);
     }
 
     update() {
