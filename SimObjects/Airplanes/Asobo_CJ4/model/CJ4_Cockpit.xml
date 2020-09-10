@@ -473,6 +473,9 @@
 		<NODE_ID>PASSENGER_Knob_Heat_1</NODE_ID>
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
+		<NODE_ID>PASSENGER_Knob_Heat_2</NODE_ID>
+	</UseTemplate>
+	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
 		<NODE_ID>PASSENGER_Knob_Air_1</NODE_ID>
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
@@ -752,8 +755,8 @@
 		<RIGHTARROW>TurnRight</RIGHTARROW>
 		<ANIMTIP_0_ON_PERCENT>0</ANIMTIP_0_ON_PERCENT>
 		<ANIMTIP_1_ON_PERCENT>1</ANIMTIP_1_ON_PERCENT>
-		<ANIMTIP_0>Decrease Cockpit Heat</ANIMTIP_0>
-		<ANIMTIP_1>Increase Cockpit Heat</ANIMTIP_1>
+		<ANIMTIP_0>Decrease Cockpit Temperature</ANIMTIP_0>
+		<ANIMTIP_1>Increase Cockpit Temperature</ANIMTIP_1>
 		<ANIM_LAG>0</ANIM_LAG>
 		<INIT_VALUE>50</INIT_VALUE>
 	</UseTemplate>
@@ -766,8 +769,13 @@
 		<USE_KNOB_INTERACTION>True</USE_KNOB_INTERACTION>
 		<LEFTARROW>TurnLeft</LEFTARROW>
 		<RIGHTARROW>TurnRight</RIGHTARROW>
+		<ANIMTIP_0_ON_PERCENT>0</ANIMTIP_0_ON_PERCENT>
+		<ANIMTIP_1_ON_PERCENT>1</ANIMTIP_1_ON_PERCENT>
+		<ANIMTIP_0>Decrease Cabin Temperature</ANIMTIP_0>
+		<ANIMTIP_1>Increase Cabin Temperature</ANIMTIP_1>
 		<ANIM_LAG>0</ANIM_LAG>
 		<INIT_VALUE>50</INIT_VALUE>
+		<ID>2</ID>
 	</UseTemplate>
 
 </Component>
@@ -889,7 +897,7 @@
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Anim_Setup">
 		<ANIM_NAME>KNOB_PRESSOURCE</ANIM_NAME>
-		<PERCENT>100</PERCENT>
+		<PERCENT>50</PERCENT>
 	</UseTemplate>
 </Component>
 <Component ID="TT_INOP">
