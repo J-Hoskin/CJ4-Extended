@@ -3,6 +3,10 @@
 ## About
 This project extends upon the features of the CJ4 aircraft in Microsoft Flight Simulator 2020. Access to technical documentation around the systems in the CJ4 are unfortunately restricted, and as such, the features added in add-on are not perfectly accurate. If you have knowledge around the systems in the CJ4 and would like to contribute, please contact me on discord Hosky#6451.
 
+[Planned Features](https://github.com/J-Hoskin/CJ4-Extended/issues)
+
+[Releases](https://github.com/J-Hoskin/CJ4-Extended/releases)
+
 ## Installation
 Installation requires that you place the "CJ4-Extended" folder into the "Community" folder of your MSFS2020 installation.
 
