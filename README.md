@@ -10,14 +10,14 @@ This project extends upon the features of the CJ4 aircraft in Microsoft Flight S
 ## Installation
 Installation requires that you place the "CJ4-Extended" folder into the "Community" folder of your MSFS2020 installation. The location of the "Community" folder depends on what platform you run MSFS2020 on.
 
-**Microsoft Store edition AND/OR Gamepass edition:**
-- C:\Users\[YOUR USERNAME]\AppData\Local\Packages\Microsoft.FlightSimulator_<RANDOMLETTERS>\LocalCache\Packages\Community.
+**Microsoft Store / Gamepass edition:**
+- C:\Users\[USER]\AppData\Local\Packages\Microsoft.FlightSimulator_<RANDOMLETTERS>\LocalCache\Packages\Community.
   
 **For the Steam edition:**
-- C:\Users\[YOUR USERNAME]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community.
+- C:\Users\[USER]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community.
 
 **For the Boxed edition:**
-- C:\Users\[YOUR USERNAME]\AppData\Local\MSFSPackages\Community.
+- C:\Users\[USER]\AppData\Local\MSFSPackages\Community.
 
 ## Setting up and Using Airport Charts
 This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is helpful for getting an idea of what an airport looks like and planning your flight accordingly.
