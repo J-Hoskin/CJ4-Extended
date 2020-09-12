@@ -2830,6 +2830,7 @@ var CJ4_PopupMenu;
     CJ4_PopupMenu[CJ4_PopupMenu["REFS"] = 2] = "REFS";
     CJ4_PopupMenu[CJ4_PopupMenu["UPPER"] = 3] = "UPPER";
     CJ4_PopupMenu[CJ4_PopupMenu["LOWER"] = 4] = "LOWER";
+    CJ4_PopupMenu[CJ4_PopupMenu["LOWER_CHART"] = 5] = "LOWER_CHART";
 })(CJ4_PopupMenu || (CJ4_PopupMenu = {}));
 class CJ4_PopupMenuContainer extends NavSystemElementContainer {
     constructor(_name, _root) {
@@ -2902,6 +2903,9 @@ class CJ4_PopupMenuContainer extends NavSystemElementContainer {
                     break;
                 case CJ4_PopupMenu.LOWER:
                     this.handler = new CJ4_PopupMenu_LOWER(this.root, this.dictionary);
+                    break;
+                case CJ4_PopupMenu.LOWER_CHART:
+                    this.handler = new CJ4_PopupMenu_LOWER_CHART(this.root, this.dictionary);
                     break;
                 default:
                     this.handler = null;
@@ -3245,10 +3249,10 @@ class CJ4_PopupMenu_LOWER extends CJ4_PopupMenu_Handler {
         this.titleSize = 15;
         this.textSize = 13;
         this.root = _root;
+        this.dictionary = _dictionary;
         this.menuLeft = 5;
         this.menuTop = 245;
         this.menuWidth = 145;
-        this.dictionary = _dictionary;
         this.showMainPage();
     }
     reset() {
@@ -3322,6 +3326,83 @@ class CJ4_PopupMenu_LOWER extends CJ4_PopupMenu_Handler {
         }
         this.closeMenu();
         this.escapeCbk = this.showMainPage.bind(this, 7);
+        page.appendChild(sectionRoot);
+        Utils.RemoveAllChildren(this.root);
+        this.root.appendChild(page);
+    }
+}
+class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
+    constructor(_root, _dictionary) {
+        super();
+        this.titleSize = 15;
+        this.textSize = 13;
+        this.root = _root;
+        this.dictionary = _dictionary;
+        this.menuLeft = 40;
+        this.menuTop = 145;
+        this.menuWidth = 420;
+        this.showChartPage();
+    }
+
+    reset() {
+        this.showChartPage();
+    }
+
+    showChartPage(_highlight = 0) {
+        this._isOnMainPage = true;
+        let page = document.createElementNS(Avionics.SVG.NS, "svg");
+        page.setAttribute("id", "ViewBox");
+        page.setAttribute("viewBox", "0 0 500 500");
+        let sectionRoot = this.openMenu();
+        {
+            this.beginSection();
+            {
+                this.addTitle("CHART MAIN INDEX", this.titleSize, 1.0, "blue");
+            }
+            this.endSection();
+            this.beginSection();
+            {
+                this.addTitle("ORIGIN - YPAD", this.textSize, 0.45);
+                this.addRadio("AIRPORT", this.textSize, null);
+                this.addRadio("DEPARTURE", this.textSize, null);
+                this.addRadio("ARRIVAL", this.textSize, null);
+                this.addRadio("APPROACH", this.textSize, null);
+            }
+            this.endSection();
+            this.beginSection();
+            {
+                this.addTitle("DESTINATION - KSLC", this.textSize, 0.45);
+                this.addRadio("ARRIVAL", this.textSize, null);
+                this.addRadio("APPROACH", this.textSize, null);
+                this.addRadio("AIRPORT", this.textSize, null);
+                this.addRadio("DEPARTURE", this.textSize, null);
+            }
+            this.endSection();
+            this.beginSection();
+            {
+                this.addTitle("ALTERNATE - ----", this.textSize, 0.45);
+                this.addRadio("ANY CHART", this.textSize, null);
+                this.addRadio("ANY CHART", this.textSize, null);
+                this.addRadio("CHART NORMS", this.textSize, null);
+            }
+            this.endSection();
+            this.beginSection();
+            {
+                this.addTitle("OTHER AIRPORT - ----", this.textSize, 0.45);
+                this.addRadio("ANY CHART", this.textSize, null);
+                this.addRadio("ANY CHART", this.textSize, null);
+                this.addRadio("CHART NORMS", this.textSize, null);
+            }
+            this.endSection();
+            this.beginSection();
+            {
+                this.addRadio("CHART DIMMING", this.textSize, null);
+                this.
+            }
+            this.endSection();
+        }
+        this.closeMenu();
+        this.highlight(_highlight);
         page.appendChild(sectionRoot);
         Utils.RemoveAllChildren(this.root);
         this.root.appendChild(page);

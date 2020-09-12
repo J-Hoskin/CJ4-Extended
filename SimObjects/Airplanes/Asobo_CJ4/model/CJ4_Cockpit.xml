@@ -209,6 +209,7 @@
 			<NODE_ID_TERR_WX>CCP_Push_terrWX</NODE_ID_TERR_WX>
 			<NODE_ID_TFC>CCP_Push_tfc</NODE_ID_TFC>
 			<NODE_ID_SYS>CCP_Push_sys</NODE_ID_SYS>
+			<NODE_ID_CHART>CCP_Push_chart</NODE_ID_CHART>
 			<NODE_ID_ZOOM>CCP_Push_zoom</NODE_ID_ZOOM>
 			<NODE_ID_CAS_PAGE>CCP_Push_casPage</NODE_ID_CAS_PAGE>
 			<NODE_ID_KNOB_MENU_ADV>CCP_Knob_Outer</NODE_ID_KNOB_MENU_ADV>
@@ -249,6 +250,7 @@
 			<NODE_ID_TFC>CCP_Push_tfc</NODE_ID_TFC>
 			<NODE_ID_SYS>CCP_Push_sys</NODE_ID_SYS>
 			<NODE_ID_ZOOM>CCP_Push_zoom</NODE_ID_ZOOM>
+			<NODE_ID_CHART>CCP_Push_chart</NODE_ID_CHART>
 			<NODE_ID_CAS_PAGE>CCP_Push_casPage</NODE_ID_CAS_PAGE>
 			<NODE_ID_KNOB_MENU_ADV>CCP_Knob_Inner</NODE_ID_KNOB_MENU_ADV>
 			<NODE_ID_KNOB_DATA>CCP_Knob_Outer</NODE_ID_KNOB_DATA>
@@ -1056,10 +1058,6 @@
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
 		<NODE_ID>push_pilot_CCP_dataBase_041</NODE_ID>
-		<CONTAINER_COUNT>2</CONTAINER_COUNT>
-	</UseTemplate>
-	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">
-		<NODE_ID>push_pilot_CCP_chart_038</NODE_ID>
 		<CONTAINER_COUNT>2</CONTAINER_COUNT>
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_GT_Interaction_Tooltip">

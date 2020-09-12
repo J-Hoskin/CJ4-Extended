@@ -160,6 +160,10 @@ class CJ4_MFD extends BaseAirliners {
             case "Lwr_Push_SYS":
                 this.isExtended = !this.isExtended;
                 break;
+            case "Lwr_Push_CHART":
+                this.showChart = !this.showChart;
+                this.popup.setMode(CJ4_PopupMenu.NONE)
+                break;
             case "Lwr_Push_ENG":
                 this.systemPage1 = (this.systemPage1 == CJ4_SystemPage.ENGINES) ? CJ4_SystemPage.ANNUNCIATIONS : CJ4_SystemPage.ENGINES;
                 break;
@@ -169,7 +173,12 @@ class CJ4_MFD extends BaseAirliners {
                 break;
             case "Lwr_Push_LWR_MENU":
                 this.fillDictionary(this.popup.dictionary);
-                this.popup.setMode(CJ4_PopupMenu.LOWER);
+                if(this.showChart){
+                    this.popup.setMode(CJ4_PopupMenu.LOWER_CHART);
+                }
+                else{
+                    this.popup.setMode(CJ4_PopupMenu.LOWER);
+                }
                 break;
         }
     }
@@ -458,7 +467,6 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
     init() {
         super.init();
         this.root = this.gps.getChildById(this.htmlElemId);
-        SimVar.SetSimVarValue("L:HOSSKY", "Bool", 0);
         if (!this.root) {
             console.log("Root component expected!");
             return;
@@ -478,8 +486,28 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
             return;
         }
 
-        // this.root.querySelector(".testt")
-        //     .textContent = SimVar.GetSimVarValue("L:HOSSKY", "Bool");
+        // Search for norm
+
+        // Search for A
+            // Search for B, C, D, E
+        // const airportCode = "YBWP.jpg";
+        // const source = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/" + airportCode;
+        //
+        // // Attempt Normal Load
+        // let html = "<img id=\"airportt\ src=""{source} alt=\"airport chart\"/>";
+        // let div = document.createElement('div');
+        // div.innerHTML = html;
+        // this.root.querySelector(".airportChart").appendChild(div);
+
+        // Grab second if fail
+        // let im = document.getElementById('airportt');
+        // im.onerror = function(){
+        //     im.src = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/" + airportCode + " - A" + ".jpg";
+        // };
+
+    }
+
+    firstLoadFailed(){
 
     }
 

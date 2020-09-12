@@ -118,26 +118,18 @@
       "date": 132427734999577502
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YBPN.jpg",
-      "size": 235819,
-      "date": 132427734999577501
+          "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YPAD.png",
+          "size": 568618,
+          "date": 132427734999577504
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YBRK.jpg",
       "size": 292508,
       "date": 132427734999577504
     },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YBWP.jpg",
-      "size": 292508,
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YPAD2.png",
+      "size": 568618,
       "date": 132427734999577504
     },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YMBC.jpg",
-      "size": 292508,
-      "date": 132427734999577504
-    },
-
 
     {
       "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/Shared/LocalVarManager.js",
@@ -169,9 +161,11 @@
       "path": "ModelBehaviorDefs/Asobo/Common/Subtemplates/Lighting_Subtemplates.xml",
       "size": 31844,
       "date": 132427734996557380
+    },
+    {
+      "path": "ModelBehaviorDefs/Asobo/GlassCockpit/AS3000.xml",
+      "size": 31954,
+      "date": 132427734996557382
     }
-
-
-
   ]
 }
