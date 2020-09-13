@@ -407,6 +407,7 @@ var Airliners;
         PopupMenu_ItemType[PopupMenu_ItemType["RADIO_RANGE"] = 5] = "RADIO_RANGE";
         PopupMenu_ItemType[PopupMenu_ItemType["SUBMENU"] = 6] = "SUBMENU";
         PopupMenu_ItemType[PopupMenu_ItemType["CHECKBOX"] = 7] = "CHECKBOX";
+        PopupMenu_ItemType[PopupMenu_ItemType["PLAIN"] = 8] = "PLAIN";
     })(PopupMenu_ItemType || (PopupMenu_ItemType = {}));
     class PopupMenu_Item {
         constructor(_type, _section, _y, _height) {
@@ -529,6 +530,11 @@ var Airliners;
                             this.activateItem(this.highlightItem, false);
                             this.highlightItem.checkboxVal = false;
                         }
+                        this.onChanged(this.highlightItem);
+                        break;
+                    case PopupMenu_ItemType.PLAIN:
+                        this.activateItem(this.highlightItem, false);
+                        this.highlightItem.checkboxVal = false;
                         this.onChanged(this.highlightItem);
                         break;
                 }
@@ -734,6 +740,76 @@ var Airliners;
             this.sectionRoot.appendChild(text);
             let item = new PopupMenu_Item(PopupMenu_ItemType.TITLE, this.section, this.section.endY, this.lineHeight);
             this.section.items.push(item);
+            this.section.endY += this.lineHeight;
+        }
+        addTextItem(_text, _textSize, _dictKeys, _value = "") {
+            let enabled = (_dictKeys != null) ? true : false;
+            let cx = this.columnLeft1 + (this.columnLeft2 - this.columnLeft1) * 0.5;
+            let cy = this.section.endY + this.lineHeight * 0.5;
+            let shape;
+
+            let size = Math.min(this.lineHeight, this.columnLeft2) * 0.33;
+            shape = document.createElementNS(Avionics.SVG.NS, "circle");
+            shape.setAttribute("cx", cx.toString());
+            shape.setAttribute("cy", cy.toString());
+            shape.setAttribute("r", size.toString());
+            shape.setAttribute("fill", "none");
+            shape.setAttribute("stroke", (enabled) ? "white" : this.disabledColor);
+            shape.setAttribute("stroke-width", "0");
+            this.sectionRoot.appendChild(shape);
+
+            let text = document.createElementNS(Avionics.SVG.NS, "text");
+            text.textContent = _text;
+            text.setAttribute("x", (this.columnLeft2 + this.textMarginX).toString());
+            text.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
+            text.setAttribute("fill", (enabled) ? "white" : this.disabledColor);
+            text.setAttribute("font-size", _textSize.toString());
+            text.setAttribute("font-family", this.textStyle);
+            text.setAttribute("alignment-baseline", "central");
+            this.sectionRoot.appendChild(text);
+
+            let value = document.createElementNS(Avionics.SVG.NS, "text");
+            value.textContent = _value;
+            value.setAttribute("x", (this.columnLeft2 + this.textMarginX + 100).toString());
+            value.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
+
+            if(_value == "[ ]"){
+                value.setAttribute("fill", "cyan");
+            }
+            else{
+                value.setAttribute("fill", "magenta");
+            }
+
+            value.setAttribute("font-size", _textSize.toString());
+            value.setAttribute("font-family", this.textStyle);
+            value.setAttribute("alignment-baseline", "central");
+            this.sectionRoot.appendChild(value);
+
+            let item = new PopupMenu_Item(PopupMenu_ItemType.PLAIN, this.section, this.section.endY, this.lineHeight);
+            item.dictKeys = _dictKeys;
+            item.radioElem = shape;
+            item.radioName = _text;
+            this.section.items.push(item);
+            this.registerWithMouse(item);
+            this.section.endY += this.lineHeight;
+        }
+        addSmallBlankItem() {
+            let enabled = false;
+            let text = document.createElementNS(Avionics.SVG.NS, "text");
+            text.setAttribute("x", (this.columnLeft2 + this.textMarginX).toString());
+            text.setAttribute("fill", (enabled) ? "white" : this.disabledColor);
+            text.setAttribute("alignment-baseline", "central");
+            this.sectionRoot.appendChild(text);
+            this.section.endY += (this.lineHeight - 14);
+        }
+        addBigBlankItem() {
+            let enabled = false;
+            let text = document.createElementNS(Avionics.SVG.NS, "text");
+            text.setAttribute("x", (this.columnLeft2 + this.textMarginX).toString());
+            text.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
+            text.setAttribute("fill", (enabled) ? "white" : this.disabledColor);
+            text.setAttribute("alignment-baseline", "central");
+            this.sectionRoot.appendChild(text);
             this.section.endY += this.lineHeight;
         }
         addList(_text, _textSize, _values, _dictKeys) {
@@ -1213,6 +1289,11 @@ var Airliners;
                         _item.checkboxTickElem.setAttribute("visibility", "hidden");
                     }
                     break;
+                case PopupMenu_ItemType.PLAIN:
+                    if(_val){
+                        this.dictionary.set(_item.dictKeys[0], _item.radioName);
+                        break;
+                    }
             }
         }
         updateSpeedInc() {
@@ -1257,6 +1338,9 @@ var Airliners;
                         break;
                     case PopupMenu_ItemType.CHECKBOX:
                         this.dictionary.set(_item.dictKeys[0], (_item.checkboxVal) ? "ON" : "OFF");
+                        break;
+                    case PopupMenu_ItemType.PLAIN:
+                        this.dictionary.set(_item.dictKeys[0], _item.radioName);
                         break;
                 }
                 switch (_item.type) {

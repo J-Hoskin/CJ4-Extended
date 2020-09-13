@@ -14,6 +14,7 @@ class CJ4_MFD extends BaseAirliners {
         this.systemPage2 = CJ4_SystemPage.ELECTRICS;
         this.modeChangeTimer = -1;
         this.initDuration = 11000;
+        this.selectedChart = 1;
     }
     get templateID() { return "CJ4_MFD"; }
     get IsGlassCockpit() { return true; }
@@ -215,6 +216,7 @@ class CJ4_MFD extends BaseAirliners {
             if (this.mapDisplayMode != Jet_NDCompass_Display.PLAN) {
                 this.mapDisplayMode = Jet_NDCompass_Display.PLAN;
                 modeChanged = true;
+                modeChanged = true;
             }
         }
         let navSrc = _dict.get(CJ4_PopupMenu_Key.NAV_SRC);
@@ -245,6 +247,19 @@ class CJ4_MFD extends BaseAirliners {
         this.map.setSymbol(CJ4_MapSymbol.AIRWAYS, (_dict.get(CJ4_PopupMenu_Key.MAP_SYMBOL_AIRWAYS) == "ON") ? true : false);
         this.map.setSymbol(CJ4_MapSymbol.AIRSPACES, (_dict.get(CJ4_PopupMenu_Key.MAP_SYMBOL_AIRSPACES) == "ON") ? true : false);
         this.map.setSymbol(CJ4_MapSymbol.NAVAIDS, (_dict.get(CJ4_PopupMenu_Key.MAP_SYMBOL_NAVAIDS) == "ON") ? true : false);
+
+        let chartSelection = _dict.get(CJ4_PopupMenu_Key.CHART_SELECTED);
+        if (chartSelection === "AIRPORT_") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
+            this.selectedChart = 1;
+            modeChanged = true;
+        }
+        else if (chartSelection === "AIRPORT") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 2);
+            this.selectedChart = 2;
+            modeChanged = true;
+        }
+
         let sysMode = _dict.get(CJ4_PopupMenu_Key.SYS_SRC);
         if (sysMode == "OFF") {
             this.isExtended = true;
@@ -282,6 +297,7 @@ class CJ4_MFD extends BaseAirliners {
             _dict.set(CJ4_PopupMenu_Key.NAV_SRC, "VOR2");
         else if (this.mapNavigationMode == Jet_NDCompass_Navigation.NAV)
             _dict.set(CJ4_PopupMenu_Key.NAV_SRC, "FMS1");
+
         _dict.set(CJ4_PopupMenu_Key.MAP_SYMBOL_AIRPORTS, (this.map.hasSymbol(CJ4_MapSymbol.AIRPORTS)) ? "ON" : "OFF");
         _dict.set(CJ4_PopupMenu_Key.MAP_SYMBOL_CONSTRAINTS, (this.map.hasSymbol(CJ4_MapSymbol.CONSTRAINTS)) ? "ON" : "OFF");
         _dict.set(CJ4_PopupMenu_Key.MAP_SYMBOL_INTERSECTS, (this.map.hasSymbol(CJ4_MapSymbol.INTERSECTS)) ? "ON" : "OFF");
@@ -423,7 +439,7 @@ class CJ4_FMSContainer extends NavSystemElementContainer {
             }
             let nextWaypointIndex = flightPlanManager.getActiveWaypointIndex() + 1;
             let nextWaypoint = flightPlanManager.getWaypoint(nextWaypointIndex);
-            if (nextWaypoint) {
+            if (nextWaypoint && activeWaypoint) {
                 this._nextWaypointContainer.style.display = "block";
                 this._nextWaypointContainer.querySelector(".cj4x-navigation-data-waypoint-ident").textContent = nextWaypoint.ident;
                 this._nextWaypointContainer.querySelector(".cj4x-navigation-data-waypoint-coordinates").textContent = nextWaypoint.infos.coordinates.toDegreeString();
@@ -486,29 +502,45 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
             return;
         }
 
-        // Search for norm
+        const chartTypeSelected = SimVar.GetSimVarValue("L:SELECTED_AIRPORT_CHART", "number");
+        let airportName = "";
+        let folder = "Airport";
+        let baseChartPath = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images";
+        let fileType = ".png";
+        let chartPage = 1;
 
-        // Search for A
-            // Search for B, C, D, E
-        // const airportCode = "YBWP.jpg";
-        // const source = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/" + airportCode;
-        //
-        // // Attempt Normal Load
-        // let html = "<img id=\"airportt\ src=""{source} alt=\"airport chart\"/>";
-        // let div = document.createElement('div');
-        // div.innerHTML = html;
-        // this.root.querySelector(".airportChart").appendChild(div);
+        // Airport info chart
+        let flightPlanManager = this.gps.currFlightPlanManager;
+        if(chartTypeSelected == 1){
+            let origin = flightPlanManager.getOrigin();
+            if(origin){
+                airportName = origin.ident;
+            }
+            else{
+                airportName = "";
+            }
+        }
+        else if(chartTypeSelected == 2){
+            let destination = flightPlanManager.getDestination();
+            if(destination){
+                airportName = destination.ident;
+            }
+            else{
+                airportName = "";
+            }
+        }
 
-        // Grab second if fail
-        // let im = document.getElementById('airportt');
-        // im.onerror = function(){
-        //     im.src = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/" + airportCode + " - A" + ".jpg";
-        // };
+        let chartImagePath = baseChartPath + "/" + folder + "/" + airportName + "/" + airportName + "-" + chartPage + fileType;
+        let html = '<img class="inverted" src="' + chartImagePath +  '"/>';
 
-    }
-
-    firstLoadFailed(){
-
+        if(airportName != ""){
+            this.root.querySelector(".airportChart").innerHTML = html;
+            this.root.querySelector(".chartName").textContent = airportName + " " + chartPage;
+            this.root.querySelector(".chartType").textContent = folder.toUpperCase();
+        }
+        else{
+            this.root.querySelector(".airportChart").innerHTML = '<p>No chart available</p>';
+        }
     }
 
 }

@@ -530,6 +530,8 @@ cj4-mfd-element {
           bottom: 3%;
           color: white;
           border: none;
+          max-height: 100%;
+          max-width: 100%;
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .chartHeader {
           position: absolute;
@@ -543,12 +545,33 @@ cj4-mfd-element {
           color: white;
           border: none;
         }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart img{
-          max-width: 100%;
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .chartHeader .chartName  {
+          float: left;
+          font-size: calc( 1.95 * 1vh * var(--bodyHeightScale));
+          height: 100%;
+        }
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .chartHeader .chartType  {
+          float: left;
+          margin-left: 50px;
+          font-size: calc( 1.95 * 1vh * var(--bodyHeightScale));
+          height: 100%;
+        }
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart {
+          height: 100% !important;
+          width: 100% !important;
+        }
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart img {
+          text-align: center;
+          font-size: 24px;
+          width: 700px !important;
+          max-height: 100% !important;
           margin-top: 3%;
           border: none;
         }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .inverted{
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart p {
+          font-size: 24px;
+        }
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart .inverted{
           filter: invert(100%);
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart[visible=false] {

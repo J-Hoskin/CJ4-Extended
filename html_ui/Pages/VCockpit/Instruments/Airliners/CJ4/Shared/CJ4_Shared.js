@@ -2905,7 +2905,7 @@ class CJ4_PopupMenuContainer extends NavSystemElementContainer {
                     this.handler = new CJ4_PopupMenu_LOWER(this.root, this.dictionary);
                     break;
                 case CJ4_PopupMenu.LOWER_CHART:
-                    this.handler = new CJ4_PopupMenu_LOWER_CHART(this.root, this.dictionary);
+                    this.handler = new CJ4_PopupMenu_LOWER_CHART(this.root, this.dictionary, this.gps);
                     break;
                 default:
                     this.handler = null;
@@ -2951,6 +2951,7 @@ var CJ4_PopupMenu_Key;
     CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["MIN_ALT_BARO_VAL"] = 23] = "MIN_ALT_BARO_VAL";
     CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["MIN_ALT_RADIO_VAL"] = 24] = "MIN_ALT_RADIO_VAL";
     CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["SYS_SRC"] = 25] = "SYS_SRC";
+    CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["CHART_SELECTED"] = 26] = "CHART_SELECTED";
 })(CJ4_PopupMenu_Key || (CJ4_PopupMenu_Key = {}));
 class CJ4_PopupMenu_Handler extends Airliners.PopupMenu_Handler {
     constructor() {
@@ -3332,15 +3333,16 @@ class CJ4_PopupMenu_LOWER extends CJ4_PopupMenu_Handler {
     }
 }
 class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
-    constructor(_root, _dictionary) {
+    constructor(_root, _dictionary, _gps) {
         super();
         this.titleSize = 15;
         this.textSize = 13;
         this.root = _root;
         this.dictionary = _dictionary;
         this.menuLeft = 40;
-        this.menuTop = 145;
-        this.menuWidth = 420;
+        this.menuTop = 60;
+        this.menuWidth = 425;
+        this.gps = _gps;
         this.showChartPage();
     }
 
@@ -3353,6 +3355,23 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
         let page = document.createElementNS(Avionics.SVG.NS, "svg");
         page.setAttribute("id", "ViewBox");
         page.setAttribute("viewBox", "0 0 500 500");
+
+        this.originAirport = "----";
+        this.destinationAirport = "----";
+        if(this.gps){
+            let flightPlanManager = this.gps.currFlightPlanManager;
+            let origin = flightPlanManager.getOrigin();
+            let destination = flightPlanManager.getDestination();
+
+            if(origin){
+                this.originAirport = origin.ident;
+            }
+
+            if(destination){
+                this.destinationAirport = destination.ident;
+            }
+        }
+
         let sectionRoot = this.openMenu();
         {
             this.beginSection();
@@ -3362,42 +3381,48 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
             this.endSection();
             this.beginSection();
             {
-                this.addTitle("ORIGIN - YPAD", this.textSize, 0.45);
-                this.addRadio("AIRPORT", this.textSize, null);
-                this.addRadio("DEPARTURE", this.textSize, null);
-                this.addRadio("ARRIVAL", this.textSize, null);
-                this.addRadio("APPROACH", this.textSize, null);
+                this.addTitle("ORIGIN - " + this.originAirport, this.textSize, 0.45);
+                this.addTextItem("AIRPORT_", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
+                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED]);
+                this.addSmallBlankItem();
+                this.addTextItem("ARRIVAL", this.textSize, null, "[ ]");
+                this.addTextItem("APPROACH", this.textSize, null, "[ ]");
+                this.addTextItem("ANY CHART", this.textSize, null, "[ ]");
+                this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();
             this.beginSection();
             {
-                this.addTitle("DESTINATION - KSLC", this.textSize, 0.45);
-                this.addRadio("ARRIVAL", this.textSize, null);
-                this.addRadio("APPROACH", this.textSize, null);
-                this.addRadio("AIRPORT", this.textSize, null);
-                this.addRadio("DEPARTURE", this.textSize, null);
+                this.addTitle("DESTINATION - " + this.destinationAirport, this.textSize, 0.45);
+                this.addTextItem("ARRIVAL", this.textSize, null, "[ ]");
+                this.addTextItem("APPROACH", this.textSize, null, "[ ]");
+                this.addTextItem("AIRPORT", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
+                this.addSmallBlankItem();
+                this.addTextItem("DEPARTURE", this.textSize, null, "[ ]");
+                this.addTextItem("ANY CHART", this.textSize, null, "[ ]");
+                this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();
             this.beginSection();
             {
                 this.addTitle("ALTERNATE - ----", this.textSize, 0.45);
-                this.addRadio("ANY CHART", this.textSize, null);
-                this.addRadio("ANY CHART", this.textSize, null);
-                this.addRadio("CHART NORMS", this.textSize, null);
+                this.addTextItem("ANY CHART", this.textSize, null);
+                this.addTextItem("ANY CHART", this.textSize, null);
+                this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();
             this.beginSection();
             {
                 this.addTitle("OTHER AIRPORT - ----", this.textSize, 0.45);
-                this.addRadio("ANY CHART", this.textSize, null);
-                this.addRadio("ANY CHART", this.textSize, null);
-                this.addRadio("CHART NORMS", this.textSize, null);
+                this.addTextItem("ANY CHART", this.textSize, null);
+                this.addTextItem("ANY CHART", this.textSize, null);
+                this.addTextItem("CHART NORMS --", this.textSize, null);
             }
             this.endSection();
             this.beginSection();
             {
-                this.addRadio("CHART DIMMING", this.textSize, null);
-                this.
+                this.addTextItem("CHART DIMMING", this.textSize, null);
+                this.addBigBlankItem();
             }
             this.endSection();
         }

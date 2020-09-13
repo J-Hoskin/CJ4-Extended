@@ -16,6 +16,7 @@ class LocalVarManager {
         // Setup variables
         SimVar.SetSimVarValue("L:SEATBELT_LIGHT_ON", "Bool", 0);
         SimVar.SetSimVarValue("L:SAFETY_LIGHT_ON", "Bool", 0);
+        SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
     }
 
     update() {
