@@ -3382,11 +3382,11 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
             this.beginSection();
             {
                 this.addTitle("ORIGIN - " + this.originAirport, this.textSize, 0.45);
-                this.addTextItem("AIRPORT_", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
-                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED]);
+                this.addTextItem("AIRPORT ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
+                this.addTextItem("DEPARTURE ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED]);
                 this.addSmallBlankItem();
-                this.addTextItem("ARRIVAL", this.textSize, null, "[ ]");
-                this.addTextItem("APPROACH", this.textSize, null, "[ ]");
+                this.addTextItem("ARRIVAL ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
+                this.addTextItem("APPROACH ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
                 this.addTextItem("ANY CHART", this.textSize, null, "[ ]");
                 this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
@@ -3394,11 +3394,11 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
             this.beginSection();
             {
                 this.addTitle("DESTINATION - " + this.destinationAirport, this.textSize, 0.45);
-                this.addTextItem("ARRIVAL", this.textSize, null, "[ ]");
-                this.addTextItem("APPROACH", this.textSize, null, "[ ]");
+                this.addTextItem("ARRIVAL", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
+                this.addTextItem("APPROACH", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
                 this.addTextItem("AIRPORT", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
                 this.addSmallBlankItem();
-                this.addTextItem("DEPARTURE", this.textSize, null, "[ ]");
+                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
                 this.addTextItem("ANY CHART", this.textSize, null, "[ ]");
                 this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }

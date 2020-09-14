@@ -249,14 +249,44 @@ class CJ4_MFD extends BaseAirliners {
         this.map.setSymbol(CJ4_MapSymbol.NAVAIDS, (_dict.get(CJ4_PopupMenu_Key.MAP_SYMBOL_NAVAIDS) == "ON") ? true : false);
 
         let chartSelection = _dict.get(CJ4_PopupMenu_Key.CHART_SELECTED);
-        if (chartSelection === "AIRPORT_") {
+        if (chartSelection === "AIRPORT ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
             this.selectedChart = 1;
             modeChanged = true;
         }
-        else if (chartSelection === "AIRPORT") {
+        else if (chartSelection === "DEPARTURE ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 2);
             this.selectedChart = 2;
+            modeChanged = true;
+        }
+        else if (chartSelection === "ARRIVAL ") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 3);
+            this.selectedChart = 3;
+            modeChanged = true;
+        }
+        else if (chartSelection === "APPROACH ") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 4);
+            this.selectedChart = 4;
+            modeChanged = true;
+        }
+        else if (chartSelection === "ARRIVAL") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 5);
+            this.selectedChart = 5;
+            modeChanged = true;
+        }
+        else if (chartSelection === "APPROACH") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 6);
+            this.selectedChart = 6;
+            modeChanged = true;
+        }
+        else if (chartSelection === "AIRPORT") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 7);
+            this.selectedChart = 7;
+            modeChanged = true;
+        }
+        else if (chartSelection === "DEPARTURE") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 8);
+            this.selectedChart = 8;
             modeChanged = true;
         }
 
@@ -511,7 +541,7 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
 
         // Airport info chart
         let flightPlanManager = this.gps.currFlightPlanManager;
-        if(chartTypeSelected == 1){
+        if(chartTypeSelected == 1 || chartTypeSelected == 2 || chartTypeSelected == 3 || chartTypeSelected == 4){
             let origin = flightPlanManager.getOrigin();
             if(origin){
                 airportName = origin.ident;
@@ -520,7 +550,7 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
                 airportName = "";
             }
         }
-        else if(chartTypeSelected == 2){
+        else if(chartTypeSelected == 5 || chartTypeSelected == 6 || chartTypeSelected == 7 || chartTypeSelected == 8){
             let destination = flightPlanManager.getDestination();
             if(destination){
                 airportName = destination.ident;
@@ -528,6 +558,20 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
             else{
                 airportName = "";
             }
+        }
+
+        // Folder info
+        if(chartTypeSelected == 1 || chartTypeSelected == 7){
+            folder = "Airport";
+        }
+        else if(chartTypeSelected == 2 || chartTypeSelected == 8){
+            folder = "Departure";
+        }
+        else if(chartTypeSelected == 3 || chartTypeSelected == 5){
+            folder = "Arrival";
+        }
+        else if(chartTypeSelected == 4 || chartTypeSelected == 6){
+            folder = "Approach";
         }
 
         let chartImagePath = baseChartPath + "/" + folder + "/" + airportName + "/" + airportName + "-" + chartPage + fileType;
