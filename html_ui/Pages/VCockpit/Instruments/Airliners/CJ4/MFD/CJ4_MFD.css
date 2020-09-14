@@ -526,7 +526,7 @@ cj4-mfd-element {
           background: black;
           left: 0;
           width: 100%;
-          height: 74.5%;
+          height: 73.5%;
           bottom: 3%;
           color: white;
           border: none;
@@ -560,11 +560,21 @@ cj4-mfd-element {
           height: 100% !important;
           width: 100% !important;
         }
+        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart {
+          height: 100% !important;
+          width: 100% !important;
+        }
+        .black {
+          background-color: black !important;
+        }
+        .white {
+          background-color: white !important;
+        }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart img {
           text-align: center;
           font-size: 24px;
-          width: 700px !important;
-          max-height: 100% !important;
+          max-width: 100% !important;
+          /*max-height: 100% !important;*/
           margin-top: 3%;
           border: none;
         }

@@ -1290,6 +1290,17 @@ var Airliners;
                     }
                     break;
                 case PopupMenu_ItemType.PLAIN:
+                    // Setup chart dimming toggle
+                    if(_item.dictKeys[0] == "CHART DIMMING"){
+                        if(_val){
+                            this.dictionary.set(_item.dictKeys[0], "night");
+                        }
+                        else{
+                            this.dictionary.set(_item.dictKeys[0], "day");
+                        }
+                        break;
+                    }
+
                     if(_val){
                         this.dictionary.set(_item.dictKeys[0], _item.radioName);
                         break;
@@ -1340,6 +1351,15 @@ var Airliners;
                         this.dictionary.set(_item.dictKeys[0], (_item.checkboxVal) ? "ON" : "OFF");
                         break;
                     case PopupMenu_ItemType.PLAIN:
+                        if(_item.dictKeys[0] == "CHART DIMMING"){
+                            if(_val){
+                                this.dictionary.set(_item.dictKeys[0], "night");
+                            }
+                            else{
+                                this.dictionary.set(_item.dictKeys[0], "day");
+                            }
+                            break;
+                        }
                         this.dictionary.set(_item.dictKeys[0], _item.radioName);
                         break;
                 }

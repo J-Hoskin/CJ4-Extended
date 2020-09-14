@@ -2952,6 +2952,7 @@ var CJ4_PopupMenu_Key;
     CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["MIN_ALT_RADIO_VAL"] = 24] = "MIN_ALT_RADIO_VAL";
     CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["SYS_SRC"] = 25] = "SYS_SRC";
     CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["CHART_SELECTED"] = 26] = "CHART_SELECTED";
+    CJ4_PopupMenu_Key[CJ4_PopupMenu_Key["CHART_DIMMING"] = 27] = "CHART_DIMMING";
 })(CJ4_PopupMenu_Key || (CJ4_PopupMenu_Key = {}));
 class CJ4_PopupMenu_Handler extends Airliners.PopupMenu_Handler {
     constructor() {
@@ -3383,23 +3384,23 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
             {
                 this.addTitle("ORIGIN - " + this.originAirport, this.textSize, 0.45);
                 this.addTextItem("AIRPORT ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
-                this.addTextItem("DEPARTURE ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED]);
+                this.addTextItem("DEPARTURE ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], " [ SIDS ] ");
                 this.addSmallBlankItem();
-                this.addTextItem("ARRIVAL ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
-                this.addTextItem("APPROACH ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
-                this.addTextItem("ANY CHART", this.textSize, null, "[ ]");
+                this.addTextItem("ARRIVAL ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ STARS ]");
+                this.addTextItem("APPROACH ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ALL ]");
+                this.addTextItem("ANY CHART ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED]," [ ALL ] ");
                 this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();
             this.beginSection();
             {
                 this.addTitle("DESTINATION - " + this.destinationAirport, this.textSize, 0.45);
-                this.addTextItem("ARRIVAL", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
-                this.addTextItem("APPROACH", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
+                this.addTextItem("ARRIVAL", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ STARS ]");
+                this.addTextItem("APPROACH", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ALL ]");
                 this.addTextItem("AIRPORT", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
                 this.addSmallBlankItem();
-                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ]");
-                this.addTextItem("ANY CHART", this.textSize, null, "[ ]");
+                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ SIDS ]");
+                this.addTextItem("ANY CHART", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], " [ ALL ] ");
                 this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();
@@ -3421,7 +3422,7 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
             this.endSection();
             this.beginSection();
             {
-                this.addTextItem("CHART DIMMING", this.textSize, null);
+                this.addTextItem("CHART DIMMING", this.textSize, [CJ4_PopupMenu_Key.CHART_DIMMING]);
                 this.addBigBlankItem();
             }
             this.endSection();

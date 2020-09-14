@@ -14,7 +14,6 @@ class CJ4_MFD extends BaseAirliners {
         this.systemPage2 = CJ4_SystemPage.ELECTRICS;
         this.modeChangeTimer = -1;
         this.initDuration = 11000;
-        this.selectedChart = 1;
     }
     get templateID() { return "CJ4_MFD"; }
     get IsGlassCockpit() { return true; }
@@ -251,7 +250,6 @@ class CJ4_MFD extends BaseAirliners {
         let chartSelection = _dict.get(CJ4_PopupMenu_Key.CHART_SELECTED);
         if (chartSelection === "AIRPORT ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
-            this.selectedChart = 1;
             modeChanged = true;
         }
         else if (chartSelection === "DEPARTURE ") {
@@ -261,33 +259,35 @@ class CJ4_MFD extends BaseAirliners {
         }
         else if (chartSelection === "ARRIVAL ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 3);
-            this.selectedChart = 3;
             modeChanged = true;
         }
         else if (chartSelection === "APPROACH ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 4);
-            this.selectedChart = 4;
             modeChanged = true;
         }
         else if (chartSelection === "ARRIVAL") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 5);
-            this.selectedChart = 5;
             modeChanged = true;
         }
         else if (chartSelection === "APPROACH") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 6);
-            this.selectedChart = 6;
             modeChanged = true;
         }
         else if (chartSelection === "AIRPORT") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 7);
-            this.selectedChart = 7;
             modeChanged = true;
         }
         else if (chartSelection === "DEPARTURE") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 8);
-            this.selectedChart = 8;
             modeChanged = true;
+        }
+
+        let chartDimming = _dict.get(CJ4_PopupMenu_Key.CHART_DIMMING);
+        if(chartDimming == "night"){
+            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 2);
+        }
+        else{
+            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1);
         }
 
         let sysMode = _dict.get(CJ4_PopupMenu_Key.SYS_SRC);
@@ -575,7 +575,20 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
         }
 
         let chartImagePath = baseChartPath + "/" + folder + "/" + airportName + "/" + airportName + "-" + chartPage + fileType;
-        let html = '<img class="inverted" src="' + chartImagePath +  '"/>';
+
+        let dimmingClass;
+        if(SimVar.GetSimVarValue("L:CHART_DIMMING", "number") == 2){
+            dimmingClass = "inverted";
+            this.root.querySelector(".airportChart")
+                .setAttribute('class', 'airportChart black');
+        }
+        else{
+            dimmingClass = "";
+            this.root.querySelector(".airportChart")
+                .setAttribute('class', 'airportChart white');
+        }
+
+        let html = '<img class="' + dimmingClass + '" src="' + chartImagePath +  '"/>';
 
         if(airportName != ""){
             this.root.querySelector(".airportChart").innerHTML = html;

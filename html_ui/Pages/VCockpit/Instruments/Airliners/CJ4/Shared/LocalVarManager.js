@@ -19,6 +19,7 @@ class LocalVarManager {
         SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
         SimVar.SetSimVarValue("L:STARTING_FUEL", "gallons", SimVar.GetSimVarValue("FUEL TOTAL QUANTITY", "gallons"));
         SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", 0);
+        SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1);
     }
 
     update() {
