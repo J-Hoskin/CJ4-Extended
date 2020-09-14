@@ -697,7 +697,6 @@
 		<ANIMTIP_1>Increase Pilot Air Fan</ANIMTIP_1>
 		<ANIM_LAG>0</ANIM_LAG>
 		<INIT_VALUE>50</INIT_VALUE>
-		<WWISE_EVENT>lighting_knob_generic</WWISE_EVENT>
 	</UseTemplate>
 	<UseTemplate Name="ASOBO_PASSENGER_Switch_Cabin_Air_Template">
 		<KNOB_NAME>PASSENGER_KNOB_AIR_2</KNOB_NAME>

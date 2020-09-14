@@ -77,7 +77,7 @@
 			<Case Check="USE_KNOB_INTERACTION">
 				<UseTemplate Name="ASOBO_GT_Knob_Finite_Dummy">
 					<KNOB_NAME>#NODE_NAME#</KNOB_NAME>
-					<WWISE_EVENT>cabin_heat_knob</WWISE_EVENT>
+					<WWISE_EVENT>lighting_knob_generic</WWISE_EVENT>
 					<COUNT>25</COUNT>
 				</UseTemplate>
 			</Case>
@@ -180,8 +180,7 @@
 				<UseTemplate Name="ASOBO_GT_Knob_Finite_Dummy">
 					<KNOB_NAME>#NODE_NAME#</KNOB_NAME>
 					<WWISE_EVENT>lighting_knob_generic</WWISE_EVENT>
-<!--					BELOW SOUND SEEMS TO BE NOT IMPLEMENTED? - TEMPORARILY REPLACED BY ABOVE -->
-<!--					<WWISE_EVENT>cabin_heat_knob</WWISE_EVENT>-->
+					<COUNT>25</COUNT>
 				</UseTemplate>
 			</Case>
 			<Default>
