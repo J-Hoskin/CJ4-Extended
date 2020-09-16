@@ -32,21 +32,33 @@ Installation requires that you place the "CJ4-Extended" folder into the "Communi
 - C:\Users\[USER]\AppData\Local\MSFSPackages\Community
 
 ## Setting up and Using Airport Charts
-This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is helpful for getting an idea of what an airport looks like and planning your flight accordingly.
+This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple implementation which allows you to see airport details and get directions without leaving the cokcpit. Its a very raw and expiremental feature but can make your flight feel more immersive.
 
 **Sourcing Charts**
-As the feature uses simple images, there are many providers of airport charts you can use. Many require a subscription or at least for you to sign up. Some free providers of high quality charts are:
 
-- Simple airport charts made for FSX :https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen
-- Australia: [Air Services Australia](https://www.airservicesaustralia.com/aip/current/dap/AeroProcChartsTOC.htm)
-- USA: [FAA](https://www.faa.gov/airports/runway_safety/diagrams/)
-- World: [Opennav](https://opennav.com/airport/ZSPD)
+As the feature uses PNG images, you are free to source airport charts from any provider.
 
-**Adding airports charts must be done in the following way:
-- Create a folder in the /charts folder with the exact ICAO name of airport
-- Create folders Arrivals, Airport, Deperature, Approach
-- Drop your images in each named accoringly. Images must be pngs
-- Add to layout file
+**Free and no signup**
+
+- Australia: [Air Services Australia](https://www.airservicesaustralia.com/aip/current/dap/AeroProcChartsTOC.htm) - Very high quality
+- USA: [FAA](https://www.faa.gov/airports/runway_safety/diagrams/), [SkyVector]()
+- Germany []
+- World: [Opennav](https://opennav.com/airport/ZSPD) - Only some airports have charts attached
+- Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen)
+
+**Adding airports charts must be done in the following way:**
+
+- Create a folder in the /Charts folder with the exact ICAO name of airport
+- Create the folders Arrivals, Airport, Deperature, Approach
+- Drop your charts for the airport in the relevant folder. Images must be PNGs
+- Add to .layout file the path of the images you just added (if this charting feature is liked, this will be automated in future)
+
+**Using airport charts**
+- First set an origin and/or a destination in the FMS
+- Press the chart button in the lower control panel to oepn the chart display
+- Press the LWR MENU button with chart display open to open the main chart index menu. Here you can select the chart you wish to view. You can also switch to chart to dark mode
+- Use the pan joystick next to the chart button to scroll your chart.
+- Use the turn knob to load next chart ('page') in the relevant folder.
 
 **Please Note**
 - Current chart implementation is done through static images, meaning they will not show your aircraft's position on them.
