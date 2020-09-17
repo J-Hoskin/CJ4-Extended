@@ -38,7 +38,6 @@ class CJ4_MFD extends BaseAirliners {
         this.addIndependentElementContainer(this.popup);
         this.modeChangeMask = this.getChildById("ModeChangeMask");
         this.maxUpdateBudget = 12;
-        SimVar.SetSimVarValue("L:CHART_SCROLL_POSITION", "number", 0);
     }
     disconnectedCallback() {
     }
@@ -180,12 +179,6 @@ class CJ4_MFD extends BaseAirliners {
                 else{
                     this.popup.setMode(CJ4_PopupMenu.LOWER);
                 }
-                break;
-            case "Lwr_JOYSTICK_DOWN":
-                this.printScrollChartDown()
-                break;
-            case "Lwr_JOYSTICK_UP":
-                this.printScrollChartUp()
                 break;
         }
     }
@@ -349,18 +342,6 @@ class CJ4_MFD extends BaseAirliners {
             _dict.set(CJ4_PopupMenu_Key.SYS_SRC, "CHART");
         else
             _dict.set(CJ4_PopupMenu_Key.SYS_SRC, "SYSTEMS");
-    }
-    printScrollChartUp(){
-        const currentScrollPos = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
-        if(currentScrollPos < 0){
-            SimVar.SetSimVarValue("L:CHART_SCROLL_POSITION", "number", currentScrollPos + 10);
-        }
-    }
-    printScrollChartDown(){
-        const currentScrollPos = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
-        if(currentScrollPos > -325){
-            SimVar.SetSimVarValue("L:CHART_SCROLL_POSITION", "number", currentScrollPos - 10);
-        }
     }
 }
 class CJ4_FMSContainer extends NavSystemElementContainer {
@@ -552,81 +533,71 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
         }
 
         const chartTypeSelected = SimVar.GetSimVarValue("L:SELECTED_AIRPORT_CHART", "number");
-        const previousChartTypeSelected = SimVar.GetSimVarValue("L:PREVIOUS_SELECTED_AIRPORT_CHART", "number");
-        const baseChartPath = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts";
+        let airportName = "";
+        let folder = "Airport";
+        let baseChartPath = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images";
+        let fileType = ".png";
         let chartPage = 1;
-        const airportName = this.getSelectedAirportICAO(chartTypeSelected);
-        const chartImagePath = this.getChartImagePath(chartTypeSelected, airportName, baseChartPath, chartPage, ".png");
 
-        if(chartTypeSelected != previousChartTypeSelected){
-            if(airportName == ""){
-                this.printNoChartAvailable();
-                return;
-            }
-            this.root.querySelector(".chartName").textContent = airportName + " " + chartPage;
-            this.root.querySelector(".chartType").textContent = "CHART";
-        }
-
-        let dimmingClass = "day";
-        if(SimVar.GetSimVarValue("L:CHART_DIMMING", "number") == 2){
-            dimmingClass = "night";
-        }
-        this.root.querySelector(".airportChart")
-            .setAttribute('class', 'airportChart' + ' ' + dimmingClass);
-
-        // Manage scrolling
-        const scrollPosition = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
-        this.root.querySelector(".airportChart")
-            .setAttribute('style', "background-image: url('" + chartImagePath + "'); background-position-y:" + scrollPosition + 'px;"');
-
-        SimVar.SetSimVarValue("L:PREVIOUS_SELECTED_AIRPORT_CHART", "number", chartTypeSelected);
-
-    }
-    getSelectedAirportICAO(_chartTypeSelected){
-        // Get airport ICAO
-        let airportICAO = "";
-        const flightPlanManager = this.gps.currFlightPlanManager;
-        if(_chartTypeSelected == 1 || _chartTypeSelected == 2 || _chartTypeSelected == 3 || _chartTypeSelected == 4){
+        // Airport info chart
+        let flightPlanManager = this.gps.currFlightPlanManager;
+        if(chartTypeSelected == 1 || chartTypeSelected == 2 || chartTypeSelected == 3 || chartTypeSelected == 4){
             let origin = flightPlanManager.getOrigin();
             if(origin){
-                airportICAO = origin.ident;
+                airportName = origin.ident;
             }
             else{
-                airportICAO = "";
+                airportName = "";
             }
         }
-        else if(_chartTypeSelected == 5 || _chartTypeSelected == 6 || _chartTypeSelected == 7 || _chartTypeSelected == 8){
+        else if(chartTypeSelected == 5 || chartTypeSelected == 6 || chartTypeSelected == 7 || chartTypeSelected == 8){
             let destination = flightPlanManager.getDestination();
             if(destination){
-                airportICAO = destination.ident;
+                airportName = destination.ident;
             }
             else{
-                airportICAO = "";
+                airportName = "";
             }
         }
-        return airportICAO;
-    }
-    getChartImagePath(_chartTypeSelected, _airportICAO, _baseChartPath, _chartPage, _fileType){
-        // Get correct folder
-        let folder = "Airport";
-        if(_chartTypeSelected == 1 || _chartTypeSelected == 7){
+
+        // Folder info
+        if(chartTypeSelected == 1 || chartTypeSelected == 7){
             folder = "Airport";
         }
-        else if(_chartTypeSelected == 2 || _chartTypeSelected == 8){
+        else if(chartTypeSelected == 2 || chartTypeSelected == 8){
             folder = "Departure";
         }
-        else if(_chartTypeSelected == 3 || _chartTypeSelected == 5){
+        else if(chartTypeSelected == 3 || chartTypeSelected == 5){
             folder = "Arrival";
         }
-        else if(_chartTypeSelected == 4 || _chartTypeSelected == 6){
+        else if(chartTypeSelected == 4 || chartTypeSelected == 6){
             folder = "Approach";
         }
 
-        let chartImagePath = _baseChartPath + "/" + _airportICAO + "/" + folder + "/" + _airportICAO + "-" + _chartPage + _fileType;
-        return chartImagePath;
-    }
-    printNoChartAvailable(){
-        this.root.querySelector(".airportChart").innerHTML = '<p>No chart available</p>';
+        let chartImagePath = baseChartPath + "/" + folder + "/" + airportName + "/" + airportName + "-" + chartPage + fileType;
+
+        let dimmingClass;
+        if(SimVar.GetSimVarValue("L:CHART_DIMMING", "number") == 2){
+            dimmingClass = "inverted";
+            this.root.querySelector(".airportChart")
+                .setAttribute('class', 'airportChart black');
+        }
+        else{
+            dimmingClass = "";
+            this.root.querySelector(".airportChart")
+                .setAttribute('class', 'airportChart white');
+        }
+
+        let html = '<img class="' + dimmingClass + '" src="' + chartImagePath +  '"/>';
+
+        if(airportName != ""){
+            this.root.querySelector(".airportChart").innerHTML = html;
+            this.root.querySelector(".chartName").textContent = airportName + " " + chartPage;
+            this.root.querySelector(".chartType").textContent = folder.toUpperCase();
+        }
+        else{
+            this.root.querySelector(".airportChart").innerHTML = '<p>No chart available</p>';
+        }
     }
 
 }
