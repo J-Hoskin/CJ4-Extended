@@ -563,6 +563,12 @@ var Airliners;
                         break;
                 }
             }
+            else if (this.showChart){
+                const chartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
+                if(chartPage > 0){
+                    SimVar.SetSimVarValue("L:CHART_PAGE", "number", chartPage - 1);
+                }
+            }
         }
         onDataInc() {
             if (this.highlightItem && this.highlightItem.enabled) {
@@ -585,6 +591,13 @@ var Airliners;
                             this.speedInc += this.speedInc_UpFactor;
                         }
                         break;
+                }
+            }
+            else if (this.showChart){
+                const chartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
+                // 11 is arbitrary limit just to prevent scrolling way past number of actual charts, not ideal but is quick
+                if(chartPage < 11){
+                    SimVar.SetSimVarValue("L:CHART_PAGE", "number", chartPage + 1);
                 }
             }
         }
@@ -769,21 +782,14 @@ var Airliners;
             this.sectionRoot.appendChild(text);
 
             let value = document.createElementNS(Avionics.SVG.NS, "text");
-            value.textContent = _value;
+            value.textContent = "_";
             value.setAttribute("x", (this.columnLeft2 + this.textMarginX + 100).toString());
             value.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
-
-            if(_value == "[ ]"){
-                value.setAttribute("fill", "cyan");
-            }
-            else{
-                value.setAttribute("fill", "magenta");
-            }
-
+            value.setAttribute("stroke", (enabled) ? "magenta" : this.disabledColor);
             value.setAttribute("font-size", _textSize.toString());
             value.setAttribute("font-family", this.textStyle);
             value.setAttribute("alignment-baseline", "central");
-            this.sectionRoot.appendChild(value);
+            this.sectionRoot.appendChild(value).innerHTML = '<p>[ <span style="color: magenta">' + _value + '</span> ] </p>';
 
             let item = new PopupMenu_Item(PopupMenu_ItemType.PLAIN, this.section, this.section.endY, this.lineHeight);
             item.dictKeys = _dictKeys;
@@ -1291,12 +1297,13 @@ var Airliners;
                     break;
                 case PopupMenu_ItemType.PLAIN:
                     // Setup chart dimming toggle
-                    if(_item.dictKeys[0] == "CHART DIMMING"){
+                    if(_item.radioName == "CHART DIMMING"){
+                        // 1- DAY, 2- NIGHT
                         if(_val){
-                            this.dictionary.set(_item.dictKeys[0], "night");
+                            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 2);
                         }
                         else{
-                            this.dictionary.set(_item.dictKeys[0], "day");
+                            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1);
                         }
                         break;
                     }
@@ -1349,18 +1356,6 @@ var Airliners;
                         break;
                     case PopupMenu_ItemType.CHECKBOX:
                         this.dictionary.set(_item.dictKeys[0], (_item.checkboxVal) ? "ON" : "OFF");
-                        break;
-                    case PopupMenu_ItemType.PLAIN:
-                        if(_item.dictKeys[0] == "CHART DIMMING"){
-                            if(_val){
-                                this.dictionary.set(_item.dictKeys[0], "night");
-                            }
-                            else{
-                                this.dictionary.set(_item.dictKeys[0], "day");
-                            }
-                            break;
-                        }
-                        this.dictionary.set(_item.dictKeys[0], _item.radioName);
                         break;
                 }
                 switch (_item.type) {

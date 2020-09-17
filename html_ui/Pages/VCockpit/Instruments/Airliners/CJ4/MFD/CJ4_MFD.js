@@ -289,14 +289,6 @@ class CJ4_MFD extends BaseAirliners {
             modeChanged = true;
         }
 
-        let chartDimming = _dict.get(CJ4_PopupMenu_Key.CHART_DIMMING);
-        if(chartDimming == "night"){
-            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 2);
-        }
-        else{
-            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1);
-        }
-
         let sysMode = _dict.get(CJ4_PopupMenu_Key.SYS_SRC);
         if (sysMode == "OFF") {
             this.isExtended = true;
@@ -552,20 +544,10 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
         }
 
         const chartTypeSelected = SimVar.GetSimVarValue("L:SELECTED_AIRPORT_CHART", "number");
-        const previousChartTypeSelected = SimVar.GetSimVarValue("L:PREVIOUS_SELECTED_AIRPORT_CHART", "number");
         const baseChartPath = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts";
-        let chartPage = 1;
+        const chartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
         const airportName = this.getSelectedAirportICAO(chartTypeSelected);
         const chartImagePath = this.getChartImagePath(chartTypeSelected, airportName, baseChartPath, chartPage, ".png");
-
-        if(chartTypeSelected != previousChartTypeSelected){
-            if(airportName == ""){
-                this.printNoChartAvailable();
-                return;
-            }
-            this.root.querySelector(".chartName").textContent = airportName + " " + chartPage;
-            this.root.querySelector(".chartType").textContent = "CHART";
-        }
 
         let dimmingClass = "day";
         if(SimVar.GetSimVarValue("L:CHART_DIMMING", "number") == 2){
@@ -576,10 +558,18 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
 
         // Manage scrolling
         const scrollPosition = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
-        this.root.querySelector(".airportChart")
-            .setAttribute('style', "background-image: url('" + chartImagePath + "'); background-position-y:" + scrollPosition + 'px;"');
 
-        SimVar.SetSimVarValue("L:PREVIOUS_SELECTED_AIRPORT_CHART", "number", chartTypeSelected);
+        if(airportName != ""){
+            this.root.querySelector(".airportChart")
+                .setAttribute('style', "background-image: url('" + chartImagePath + "'); background-position-y:" + scrollPosition + 'px;"');
+        }
+        else{
+            this.printNoChartAvailable();
+        }
+
+
+        this.root.querySelector(".chartName").textContent = airportName + " " + chartPage;
+        this.root.querySelector(".chartType").textContent = "CHART";
 
     }
     getSelectedAirportICAO(_chartTypeSelected){
