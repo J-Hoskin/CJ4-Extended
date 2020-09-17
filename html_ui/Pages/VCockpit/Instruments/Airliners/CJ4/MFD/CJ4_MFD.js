@@ -560,19 +560,19 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
         if(_chartTypeSelected == 1 || _chartTypeSelected == 2 || _chartTypeSelected == 3 || _chartTypeSelected == 4){
             let origin = flightPlanManager.getOrigin();
             if(origin){
-                airportName = origin.ident;
+                airportICAO = origin.ident;
             }
             else{
-                airportName = "";
+                airportICAO = "";
             }
         }
         else if(chartTypeSelected == 5 || chartTypeSelected == 6 || chartTypeSelected == 7 || chartTypeSelected == 8){
             let destination = flightPlanManager.getDestination();
             if(destination){
-                airportName = destination.ident;
+                airportICAO = destination.ident;
             }
             else{
-                airportName = "";
+                airportICAO = "";
             }
         }
 
