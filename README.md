@@ -4,9 +4,9 @@
 This project extends upon the features of the Citation CJ4 aircraft in Microsoft Flight Simulator 2020. Access to technical documentation around the systems in the CJ4 are unfortunately restricted, and as such, the features added in add-on are not perfectly accurate. Instead, the focus is on fleshing out the flight experience.
 
 **Current features**
-- Air and heat knob functionality (Pilot and Copilot, x, x, x, x, x) - Just animations
+- Air and heat knob animation functionality (Pilot, Copilot, and Cabin Fan, Cockpit and Cabin Temperature, Climate Control)
 - Seatbelt lights and annucations
-- Static airport navigational charts (first of its kind?)
+- Static airport charting functionality (first of its kind?)
 - More realistic fuel consumption
 - Nearest airports FMS
 - Flight log FMS page (Take-off time, en-route time, esitmated landing time, used fuel)
