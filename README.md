@@ -32,6 +32,7 @@ Installation requires that you place the "CJ4-Extended" folder into the "Communi
 - C:\Users\[USER]\AppData\Local\MSFSPackages\Community
 
 ## Setting up and Using Airport Charts
+![image](https://user-images.githubusercontent.com/48885195/93568759-f7db9500-f9d3-11ea-8800-b051b0641765.png)
 This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion.
 
 ### Sourcing Charts
