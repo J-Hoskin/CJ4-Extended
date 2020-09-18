@@ -42,10 +42,10 @@ As the feature uses PNG images, you are free to source airport charts from any p
 **Free and no signup**
 
 - Australia: [Air Services Australia](https://www.airservicesaustralia.com/aip/current/dap/AeroProcChartsTOC.htm) - Very high quality
-- USA: [FAA](https://www.faa.gov/airports/runway_safety/diagrams/), [SkyVector]()
-- Germany []
+- USA: [FAA](https://www.faa.gov/airports/runway_safety/diagrams/), [SkyVector](https://skyvector.com/)
+- Germany [Vatsim Germany](https://vatsim-germany.org/pilots/aerodromes) - Other Vatsim communities have charts too
 - World: [Opennav](https://opennav.com/airport/ZSPD) - Only some airports have charts attached
-- Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen)
+- Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen) - Basic FSX charts
 
 ### Adding airports charts must be done in the following way:
 
