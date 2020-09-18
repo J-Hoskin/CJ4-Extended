@@ -561,14 +561,12 @@ cj4-mfd-element {
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart {
           height: 100% !important;
           width: 100% !important;
-        }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart {
-          height: 100% !important;
-          width: 100% !important;
           height: 100%;
           background-repeat: no-repeat;
           background-size: cover;
           color: white;
+          background-color: black !important;
+          margin-top: 3%;
         }
         .night {
           background-color: black !important;
@@ -578,19 +576,8 @@ cj4-mfd-element {
           background-color: white !important;
           filter: invert(0%);
         }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart img {
-          text-align: center;
-          font-size: 24px;
-          max-width: 100% !important;
-          /*max-height: 100% !important;*/
-          margin-top: 3%;
-          border: none;
-        }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart p {
           font-size: 24px;
-        }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart .inverted{
-          filter: invert(100%);
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart[visible=false] {
           display: none; }

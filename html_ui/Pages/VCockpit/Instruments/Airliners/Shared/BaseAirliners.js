@@ -563,12 +563,6 @@ var Airliners;
                         break;
                 }
             }
-            else if (this.showChart){
-                const chartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
-                if(chartPage > 0){
-                    SimVar.SetSimVarValue("L:CHART_PAGE", "number", chartPage - 1);
-                }
-            }
         }
         onDataInc() {
             if (this.highlightItem && this.highlightItem.enabled) {
@@ -591,13 +585,6 @@ var Airliners;
                             this.speedInc += this.speedInc_UpFactor;
                         }
                         break;
-                }
-            }
-            else if (this.showChart){
-                const chartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
-                // 11 is arbitrary limit just to prevent scrolling way past number of actual charts, not ideal but is quick
-                if(chartPage < 11){
-                    SimVar.SetSimVarValue("L:CHART_PAGE", "number", chartPage + 1);
                 }
             }
         }
@@ -757,19 +744,6 @@ var Airliners;
         }
         addTextItem(_text, _textSize, _dictKeys, _value = "") {
             let enabled = (_dictKeys != null) ? true : false;
-            let cx = this.columnLeft1 + (this.columnLeft2 - this.columnLeft1) * 0.5;
-            let cy = this.section.endY + this.lineHeight * 0.5;
-            let shape;
-
-            let size = Math.min(this.lineHeight, this.columnLeft2) * 0.33;
-            shape = document.createElementNS(Avionics.SVG.NS, "circle");
-            shape.setAttribute("cx", cx.toString());
-            shape.setAttribute("cy", cy.toString());
-            shape.setAttribute("r", size.toString());
-            shape.setAttribute("fill", "none");
-            shape.setAttribute("stroke", (enabled) ? "white" : this.disabledColor);
-            shape.setAttribute("stroke-width", "0");
-            this.sectionRoot.appendChild(shape);
 
             let text = document.createElementNS(Avionics.SVG.NS, "text");
             text.textContent = _text;
@@ -781,19 +755,45 @@ var Airliners;
             text.setAttribute("alignment-baseline", "central");
             this.sectionRoot.appendChild(text);
 
-            let value = document.createElementNS(Avionics.SVG.NS, "text");
-            value.textContent = "_";
-            value.setAttribute("x", (this.columnLeft2 + this.textMarginX + 100).toString());
-            value.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
-            value.setAttribute("stroke", (enabled) ? "magenta" : this.disabledColor);
-            value.setAttribute("font-size", _textSize.toString());
-            value.setAttribute("font-family", this.textStyle);
-            value.setAttribute("alignment-baseline", "central");
-            this.sectionRoot.appendChild(value).innerHTML = '<p>[ <span style="color: magenta">' + _value + '</span> ] </p>';
+            if(_value != ""){
+                let value = document.createElementNS(Avionics.SVG.NS, "text");
+                value.textContent = "[ " + _value + " ]"; // Brackets should be cyan but not sure how to append spans correctly
+
+                value.setAttribute("x", (this.columnLeft2 + this.textMarginX + 105).toString());
+                value.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
+                value.setAttribute("fill", (enabled) ? "magenta" : this.disabledColor);
+                value.setAttribute("font-size", _textSize.toString());
+                value.setAttribute("font-family", this.textStyle);
+                value.setAttribute("alignment-baseline", "central");
+
+                this.sectionRoot.appendChild(value)
+            }
+
+            if(_text == "CHART DIMMING"){
+                const chartDimming = SimVar.GetSimVarValue("L:CHART_DIMMING", "number");
+                let day = document.createElementNS(Avionics.SVG.NS, "text");
+                day.textContent = "DAY";
+                day.setAttribute("x", (this.columnLeft2 + this.textMarginX + 140).toString());
+                day.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
+                day.setAttribute("fill", (chartDimming == 1) ? "cyan" : "white");
+                day.setAttribute("font-size", _textSize.toString());
+                day.setAttribute("font-family", this.textStyle);
+                day.setAttribute("alignment-baseline", "central");
+                this.sectionRoot.appendChild(day);
+
+                let night = document.createElementNS(Avionics.SVG.NS, "text");
+                night.textContent = "NIGHT";
+                night.setAttribute("x", (this.columnLeft2 + this.textMarginX + 180).toString());
+                night.setAttribute("y", (this.section.endY + this.lineHeight * 0.5).toString());
+                night.setAttribute("fill", (chartDimming == 2) ? "cyan" : "white");
+                night.setAttribute("font-size", _textSize.toString());
+                night.setAttribute("font-family", this.textStyle);
+                night.setAttribute("alignment-baseline", "central");
+                this.sectionRoot.appendChild(night);
+            }
 
             let item = new PopupMenu_Item(PopupMenu_ItemType.PLAIN, this.section, this.section.endY, this.lineHeight);
             item.dictKeys = _dictKeys;
-            item.radioElem = shape;
             item.radioName = _text;
             this.section.items.push(item);
             this.registerWithMouse(item);
@@ -1299,7 +1299,8 @@ var Airliners;
                     // Setup chart dimming toggle
                     if(_item.radioName == "CHART DIMMING"){
                         // 1- DAY, 2- NIGHT
-                        if(_val){
+                        const chartDimming = SimVar.GetSimVarValue("L:CHART_DIMMING", "number");
+                        if(chartDimming == 1){
                             SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 2);
                         }
                         else{
@@ -1308,6 +1309,7 @@ var Airliners;
                         break;
                     }
 
+                    SimVar.SetSimVarValue("L:CHART_PAGE", "number", 1); // Reset page number of chart type change
                     if(_val){
                         this.dictionary.set(_item.dictKeys[0], _item.radioName);
                         break;
@@ -1356,6 +1358,9 @@ var Airliners;
                         break;
                     case PopupMenu_ItemType.CHECKBOX:
                         this.dictionary.set(_item.dictKeys[0], (_item.checkboxVal) ? "ON" : "OFF");
+                        break;
+                    case PopupMenu_ItemType.PLAIN:
+                        this.dictionary.set(_item.dictKeys[0], _item.radioName);
                         break;
                 }
                 switch (_item.type) {
