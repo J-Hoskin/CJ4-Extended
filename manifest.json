@@ -1,21 +1,33 @@
 {
-  "dependencies": [
-    {
-      "name": "asobo-vcockpits-instruments-airliners",
-      "package_version": "0.1.13"
-    }
-  ],
-  "content_type": "CORE",
-  "title": "",
-  "manufacturer": "",
-  "creator": "Asobo Studio",
-  "package_version": "0.1.40",
-  "minimum_game_version": "1.7.13",
-  "release_notes": {
-    "neutral": {
-      "LastUpdate": "",
-      "OlderHistory": ""
-    }
-  },
-  "total_package_size": "00000000000000481512"
+    "dependencies": [
+        {
+            "name": "asobo-vcockpits-instruments-airliners",
+            "package_version": "0.1.13"
+        },
+        {
+            "name": "asobo-aircraft-cj4",
+            "package_version": "0.1.40"
+        },
+        {
+            "name": "asobo-vcockpits-instruments-cj4",
+            "package_version": "0.1.43"
+        },
+        {
+            "name": "fs-base-aircraft-common",
+            "package_version": "0.1.63"
+        }
+    ],
+    "content_type": "AIRCRAFT",
+    "title": "CJ4-Extended",
+    "manufacturer": "Textron Aviation",
+    "creator": "Hosky",
+    "package_version": "0.1.00",
+    "minimum_game_version": "1.7.13",
+    "release_notes": {
+        "neutral": {
+            "LastUpdate": "",
+            "OlderHistory": ""
+        }
+    },
+    "total_package_size": "00000000000065806839"
 }
