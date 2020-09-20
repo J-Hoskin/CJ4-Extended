@@ -5,11 +5,12 @@ This project extends upon the features of the Citation CJ4 aircraft in Microsoft
 
 **Current features**
 - Air and heat knob animation functionality (Pilot, Copilot, and Cabin Fan, Cockpit and Cabin Temperature, Climate Control)
-- Seatbelt lights and annucations
+- Seatbelt lights and chime
 - Static airport charting functionality (first of its kind?)
 - Flight log FMS page (Take-off time, time en-route, esitmated landing time, used fuel)
 - Fixed FMS styling bugs
-- UTC clock functionality on MFD and PFD
+- UTC clock and RAT functionality on MFD and PFD
+- Significant fuel performance improvements
 
 If you have knowledge around the systems in the CJ4 and would like to contribute, please contact me on Discord at Hosky#6451. If you would like to contribute to development, feel free to submit a pull request. A list of features can be found in the 'Issues' tab.
 
@@ -38,7 +39,7 @@ This add-on adds the ability to load airport charts onto the MFD of the CJ4. Thi
 
 ### Sourcing Charts
 
-As the feature uses PNG images for charts, you are free to source airport charts from any provider.
+As the feature uses PNG images for charts, you are free to source airport charts from any provider. An image size around 1166W x 1654H works well. A shorter height if no scrolling is desired. Greater widths are not recommended as there currently is no horizontal scrolling implemented.
 
 **Free and no signup**
 
@@ -62,7 +63,6 @@ Repeat for each airport:
   },
   ```
 
-
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
 - Press the `Chart` button in the lower control panel to open the chart display
@@ -75,5 +75,9 @@ Repeat for each airport:
 - MSFS2020 makes up the taxiways of airports, and as such, stock ATC directions are unlikely to correspond with your airport charts.
 - The following instructions have to be followed exactly for the feature to work.
 
-
-
+## Credits
+Thanks goes to:
+[Soberat](https://www.nexusmods.com/microsoftflightsimulator/mods/225) for RAT code
+[Vaporized_Butter](https://www.nexusmods.com/microsoftflightsimulator/mods/8) for fuel improvements
+[dga711](https://github.com/dga711/devtools-backend-refurb) for devtools which kept me barely sane
+[FlyByWire Team](https://github.com/flybywiresim) for trailblazing addon development
