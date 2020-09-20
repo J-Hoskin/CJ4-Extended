@@ -1,5 +1,5 @@
 # CJ4 Extended
-![image](https://user-images.githubusercontent.com/48885195/92542021-fe0e9a80-f28a-11ea-961f-ebb8e8b5ef0e.png)
+![image](https://user-images.githubusercontent.com/48885195/93709493-dae4c480-fb81-11ea-8fbc-919519f2bc1f.png)
 ## About
 This project extends upon the features of the Citation CJ4 aircraft in Microsoft Flight Simulator 2020. Access to technical documentation around the systems in the CJ4 are unfortunately restricted, and as such, the features added in add-on are not perfectly accurate. Instead, the focus is on fleshing out the flight experience.
 
