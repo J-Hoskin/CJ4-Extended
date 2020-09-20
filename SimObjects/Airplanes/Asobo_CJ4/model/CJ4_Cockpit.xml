@@ -740,9 +740,9 @@
 		<ANIMTIP_0_ON_PERCENT>0</ANIMTIP_0_ON_PERCENT>
 		<ANIMTIP_1_ON_PERCENT>0.5</ANIMTIP_1_ON_PERCENT>
 		<ANIMTIP_2_ON_PERCENT>1</ANIMTIP_2_ON_PERCENT>
-		<ANIMTIP_0>Set Climate Control from NORM to Off</ANIMTIP_0>
-		<ANIMTIP_1>Set Climate Control to NORM from COMP ON</ANIMTIP_1>
-		<ANIMTIP_2>Set Climate Control from NORM to COMP ON</ANIMTIP_2>
+		<ANIMTIP_0>Set Climate Control to OFF</ANIMTIP_0>
+		<ANIMTIP_1>Set Climate Control to NORM</ANIMTIP_1>
+		<ANIMTIP_2>Set Climate Control to COMP ON</ANIMTIP_2>
 	</UseTemplate>
 
 	<!--HEAT KNOBS-->
