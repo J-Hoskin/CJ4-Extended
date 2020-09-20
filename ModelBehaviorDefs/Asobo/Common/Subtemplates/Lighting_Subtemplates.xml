@@ -69,222 +69,222 @@ LIGHT_TYPE (text): light type (TAXI, STROBE, ..) in caps
 </Template>
 
 <Template Name="ASOBO_LIGHTING_Switch_Light_SubTemplate">
-	<DefaultTemplateParameters>
-		<ANIM_NAME>LIGHTING_#INTERACTION#_Light_#LIGHT_TYPE#_#ID#</ANIM_NAME>
-		<PART_ID>LIGHTING_#INTERACTION#_Light_#LIGHT_TYPE#</PART_ID>
-		<NODE_ID>LIGHTING_#INTERACTION#_Light_#LIGHT_TYPE#_#ID#</NODE_ID>
-		<ANIM_SIMVAR>LIGHT #LIGHT_TYPE#:#SIMVAR_INDEX#</ANIM_SIMVAR>
-		<WWISE_EVENT>light_switch</WWISE_EVENT>
-		<Condition Check="SIMVAR_INDEX_2">
-			<True>
-				<ANIM_SIMVAR_2>LIGHT #LIGHT_TYPE#:#SIMVAR_INDEX_2#</ANIM_SIMVAR_2>
-			</True>
-		</Condition>
-		<ANIM_SIMVAR_UNITS>Percent</ANIM_SIMVAR_UNITS>
-		<KEY_ID>TOGGLE_#LIGHT_TYPE#_LIGHTS</KEY_ID>
-		<Condition Valid="POTENTIOMETER">
-			<True>
-				<TOGGLE_COND>1</TOGGLE_COND>
-			</True>
-			<False>
-				<HELPID>HELPID_GAUGE_LIGHT_SWITCH_#LIGHT_TYPE#</HELPID>
-
-			</False>
-		</Condition>
-		<Condition Check="KEY_ID_2">
-			<False>
-				<Condition Check="LIGHT_TYPE2">
-					<True>
-						<KEY_ID_2>TOGGLE_#LIGHT_TYPE2#_LIGHTS</KEY_ID_2>
-					</True>
-					<False>
-						<KEY_ID_2>TOGGLE_#LIGHT_TYPE#_LIGHTS</KEY_ID_2>
-					</False>
-				</Condition>
-			</False>
-		</Condition>
-	</DefaultTemplateParameters>
-	<OverrideTemplateParameters>
-		<Condition Check="SIMVAR_INDEX_2">
-			<True>
-				<SIMVAR_LEFT_SINGLE_CODE>
-					#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
-					#SIMVAR_INDEX_2# (&gt;K:#KEY_ID_2#)
-				</SIMVAR_LEFT_SINGLE_CODE>
-			</True>
-			<False>
-				<SIMVAR_LEFT_SINGLE_CODE>
-					#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
-				</SIMVAR_LEFT_SINGLE_CODE>
-			</False>
-		</Condition>
-
-	</OverrideTemplateParameters>
-
+<DefaultTemplateParameters>
+	<ANIM_NAME>LIGHTING_#INTERACTION#_Light_#LIGHT_TYPE#_#ID#</ANIM_NAME>
+	<PART_ID>LIGHTING_#INTERACTION#_Light_#LIGHT_TYPE#</PART_ID>
+	<NODE_ID>LIGHTING_#INTERACTION#_Light_#LIGHT_TYPE#_#ID#</NODE_ID>
+	<ANIM_SIMVAR>LIGHT #LIGHT_TYPE#:#SIMVAR_INDEX#</ANIM_SIMVAR>
+	<WWISE_EVENT>light_switch</WWISE_EVENT>
+	<Condition Check="SIMVAR_INDEX_2">
+		<True>
+			<ANIM_SIMVAR_2>LIGHT #LIGHT_TYPE#:#SIMVAR_INDEX_2#</ANIM_SIMVAR_2>
+		</True>
+	</Condition>
+	<ANIM_SIMVAR_UNITS>Percent</ANIM_SIMVAR_UNITS>
+	<KEY_ID>TOGGLE_#LIGHT_TYPE#_LIGHTS</KEY_ID>
 	<Condition Valid="POTENTIOMETER">
 		<True>
-			<Switch>
-				<Case Check="DIMMER">
-					<Component ID="#NODE_ID#" Node="#NODE_ID#">
-						<UseTemplate Name="ASOBO_GT_Switch_3States">
-							<CODE_POS_0>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								100 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
-							</CODE_POS_0>
-							<CODE_POS_1>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								50 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
-							</CODE_POS_1>
-							<CODE_POS_2>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								0 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
-							</CODE_POS_2>
-							<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 50 &gt; and</STATE0_TEST>
-							<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 50 &lt;= and</STATE1_TEST>
-							<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! </STATE2_TEST>
-						</UseTemplate>
-					</Component>
-				</Case>
-				<Case Check="HAS_AUTO">
-					<Component ID="#NODE_ID#" Node="#NODE_ID#">
-						<UseTemplate Name="ASOBO_GT_Update">
-							<FREQUENCY>1</FREQUENCY>
-							<UPDATE_CODE>
-								(L:#LIGHT_TYPE#_#ID#_Auto) if{
-									(A:SIM ON GROUND, Bool) ! 100 * (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
-								} els{
-									100 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
-								}
-							</UPDATE_CODE>
-						</UseTemplate>
-						<UseTemplate Name="ASOBO_GT_Switch_3States">
-							<CODE_POS_0>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								0 (&gt;L:#LIGHT_TYPE#_#ID#_Auto)
-							</CODE_POS_0>
-							<CODE_POS_1>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								1 (&gt;L:#LIGHT_TYPE#_#ID#_Auto)
-							</CODE_POS_1>
-							<CODE_POS_2>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								0 (&gt;L:#LIGHT_TYPE#_#ID#_Auto)
-							</CODE_POS_2>
-							<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (L:#LIGHT_TYPE#_#ID#_Auto) ! and </STATE0_TEST>
-							<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (L:#LIGHT_TYPE#_#ID#_Auto) and</STATE1_TEST>
-							<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! </STATE2_TEST>
-						</UseTemplate>
-					</Component>
-				</Case>
-				<Default>
-					<UseTemplate Name="ASOBO_LIGHTING_Switch_Potentiometer_Template">
-						<ANIM_CODE>
-							(A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 0 != (A:#ANIM_SIMVAR#, bool) and 100 *
-						</ANIM_CODE>
-						<LEFT_SINGLE_CODE>
-							#TOGGLE_COND# (A:#ANIM_SIMVAR#, bool) != if{
-								#SIMVAR_LEFT_SINGLE_CODE#
-							}
-						</LEFT_SINGLE_CODE>
-						<INIT_ON_COND>(A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 0 &gt; (A:#ANIM_SIMVAR#, bool) and</INIT_ON_COND>
-					</UseTemplate>
-				</Default>
-			</Switch>
+			<TOGGLE_COND>1</TOGGLE_COND>
 		</True>
 		<False>
-			<Switch>
-				<Case Check="RETRACTABLE">
-					<Component ID="#NODE_ID#" Node="#NODE_ID#">
-						<UseTemplate Name="ASOBO_GT_Switch_3States">
-							<CODE_POS_0>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-							</CODE_POS_0>
-							<CODE_POS_1>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
-									#SIMVAR_LEFT_SINGLE_CODE#
-								}
-								0 (&gt;L:#LIGHT_TYPE#_#ID#_Retracted)
-							</CODE_POS_1>
-							<CODE_POS_2>
-								1 (&gt;L:#LIGHT_TYPE#_#ID#_Retracted)
-							</CODE_POS_2>
-							<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) </STATE0_TEST>
-							<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! (L:#LIGHT_TYPE#_#ID#_Retracted) ! and</STATE1_TEST>
-							<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! (L:#LIGHT_TYPE#_#ID#_Retracted) and</STATE2_TEST>
-						</UseTemplate>
-					</Component>
-				</Case>
-				<Case Check="PARTIAL_LIGHT_OPTION">
-					<Component ID="#NODE_ID#" Node="#NODE_ID#">
-						<UseTemplate Name="ASOBO_GT_Switch_3States">
-							<CODE_POS_0>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
-								}
-								(A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) if{
-									#SIMVAR_INDEX_2# (&gt;K:#KEY_ID#)
-								}
-							</CODE_POS_0>
-							<CODE_POS_1>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
-									#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
-								}
-								(A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) if{
-									#SIMVAR_INDEX_2# (&gt;K:#KEY_ID#)
-								}
-							</CODE_POS_1>
-							<CODE_POS_2>
-								(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
-								}
-								(A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) ! if{
-									#SIMVAR_INDEX_2# (&gt;K:#KEY_ID#)
-								}
-							</CODE_POS_2>
-							<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) ! and </STATE0_TEST>
-							<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! (A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) ! and </STATE1_TEST>
-							<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) and </STATE2_TEST>
-						</UseTemplate>
-					</Component>
-				</Case>
-				<Default>
-					<Component ID="#NODE_ID#" Node="#NODE_ID#">
-						<DefaultTemplateParameters>
-							<TOOLTIPID>%((A:LIGHT RECOGNITION, bool))%{if}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_ON %{else}TT:COCKPIT.TOOLTIPS.PULSE_LIGHT_OFF%{end}</TOOLTIPID>
-						</DefaultTemplateParameters>
-						<Switch Param="INTERACTION">
-							<Case Value="Push">
-								<UseTemplate Name="ASOBO_GT_Push_Button_Airliner">
-									<LEFT_SINGLE_CODE>#SIMVAR_LEFT_SINGLE_CODE#</LEFT_SINGLE_CODE>
-									<ONLY_SEQ1/>
-									<SEQ1_EMISSIVE_CODE>(A:#ANIM_SIMVAR#, Bool)</SEQ1_EMISSIVE_CODE>
-								</UseTemplate>
-							</Case>
-							<Default>
-								<UseTemplate Name="ASOBO_GT_Switch_Code">
-									<LEFT_SINGLE_CODE>#SIMVAR_LEFT_SINGLE_CODE#</LEFT_SINGLE_CODE>
-								</UseTemplate>
-							</Default>
-						</Switch>
-					</Component>
-				</Default>
-			</Switch>
+			<HELPID>HELPID_GAUGE_LIGHT_SWITCH_#LIGHT_TYPE#</HELPID>
+
 		</False>
 	</Condition>
+	<Condition Check="KEY_ID_2">
+		<False>
+			<Condition Check="LIGHT_TYPE2">
+				<True>
+					<KEY_ID_2>TOGGLE_#LIGHT_TYPE2#_LIGHTS</KEY_ID_2>
+				</True>
+				<False>
+					<KEY_ID_2>TOGGLE_#LIGHT_TYPE#_LIGHTS</KEY_ID_2>
+				</False>
+			</Condition>
+		</False>
+	</Condition>
+</DefaultTemplateParameters>
+<OverrideTemplateParameters>
+	<Condition Check="SIMVAR_INDEX_2">
+		<True>
+			<SIMVAR_LEFT_SINGLE_CODE>
+				#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
+				#SIMVAR_INDEX_2# (&gt;K:#KEY_ID_2#)
+			</SIMVAR_LEFT_SINGLE_CODE>
+		</True>
+		<False>
+			<SIMVAR_LEFT_SINGLE_CODE>
+				#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
+			</SIMVAR_LEFT_SINGLE_CODE>
+		</False>
+	</Condition>
+
+</OverrideTemplateParameters>
+
+<Condition Valid="POTENTIOMETER">
+	<True>
+		<Switch>
+			<Case Check="DIMMER">
+				<Component ID="#NODE_ID#" Node="#NODE_ID#">
+					<UseTemplate Name="ASOBO_GT_Switch_3States">
+						<CODE_POS_0>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							100 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
+						</CODE_POS_0>
+						<CODE_POS_1>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							50 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
+						</CODE_POS_1>
+						<CODE_POS_2>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							0 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
+						</CODE_POS_2>
+						<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 50 &gt; and</STATE0_TEST>
+						<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 50 &lt;= and</STATE1_TEST>
+						<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! </STATE2_TEST>
+					</UseTemplate>
+				</Component>
+			</Case>
+			<Case Check="HAS_AUTO">
+				<Component ID="#NODE_ID#" Node="#NODE_ID#">
+					<UseTemplate Name="ASOBO_GT_Update">
+						<FREQUENCY>1</FREQUENCY>
+						<UPDATE_CODE>
+							(L:#LIGHT_TYPE#_#ID#_Auto) if{
+							(A:SIM ON GROUND, Bool) ! 100 * (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
+							} els{
+							100 (&gt;K:LIGHT_POTENTIOMETER_#POTENTIOMETER#_SET)
+							}
+						</UPDATE_CODE>
+					</UseTemplate>
+					<UseTemplate Name="ASOBO_GT_Switch_3States">
+						<CODE_POS_0>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							0 (&gt;L:#LIGHT_TYPE#_#ID#_Auto)
+						</CODE_POS_0>
+						<CODE_POS_1>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							1 (&gt;L:#LIGHT_TYPE#_#ID#_Auto)
+						</CODE_POS_1>
+						<CODE_POS_2>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							0 (&gt;L:#LIGHT_TYPE#_#ID#_Auto)
+						</CODE_POS_2>
+						<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (L:#LIGHT_TYPE#_#ID#_Auto) ! and </STATE0_TEST>
+						<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (L:#LIGHT_TYPE#_#ID#_Auto) and</STATE1_TEST>
+						<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! </STATE2_TEST>
+					</UseTemplate>
+				</Component>
+			</Case>
+			<Default>
+				<UseTemplate Name="ASOBO_LIGHTING_Switch_Potentiometer_Template">
+					<ANIM_CODE>
+						(A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 0 != (A:#ANIM_SIMVAR#, bool) and 100 *
+					</ANIM_CODE>
+					<LEFT_SINGLE_CODE>
+						#TOGGLE_COND# (A:#ANIM_SIMVAR#, bool) != if{
+						#SIMVAR_LEFT_SINGLE_CODE#
+						}
+					</LEFT_SINGLE_CODE>
+					<INIT_ON_COND>(A:LIGHT POTENTIOMETER:#POTENTIOMETER#, Percent) 0 &gt; (A:#ANIM_SIMVAR#, bool) and</INIT_ON_COND>
+				</UseTemplate>
+			</Default>
+		</Switch>
+	</True>
+	<False>
+		<Switch>
+			<Case Check="RETRACTABLE">
+				<Component ID="#NODE_ID#" Node="#NODE_ID#">
+					<UseTemplate Name="ASOBO_GT_Switch_3States">
+						<CODE_POS_0>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+						</CODE_POS_0>
+						<CODE_POS_1>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
+							#SIMVAR_LEFT_SINGLE_CODE#
+							}
+							0 (&gt;L:#LIGHT_TYPE#_#ID#_Retracted)
+						</CODE_POS_1>
+						<CODE_POS_2>
+							1 (&gt;L:#LIGHT_TYPE#_#ID#_Retracted)
+						</CODE_POS_2>
+						<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) </STATE0_TEST>
+						<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! (L:#LIGHT_TYPE#_#ID#_Retracted) ! and</STATE1_TEST>
+						<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! (L:#LIGHT_TYPE#_#ID#_Retracted) and</STATE2_TEST>
+					</UseTemplate>
+				</Component>
+			</Case>
+			<Case Check="PARTIAL_LIGHT_OPTION">
+				<Component ID="#NODE_ID#" Node="#NODE_ID#">
+					<UseTemplate Name="ASOBO_GT_Switch_3States">
+						<CODE_POS_0>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
+							}
+							(A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) if{
+							#SIMVAR_INDEX_2# (&gt;K:#KEY_ID#)
+							}
+						</CODE_POS_0>
+						<CODE_POS_1>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) if{
+							#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
+							}
+							(A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) if{
+							#SIMVAR_INDEX_2# (&gt;K:#KEY_ID#)
+							}
+						</CODE_POS_1>
+						<CODE_POS_2>
+							(A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_INDEX# (&gt;K:#KEY_ID#)
+							}
+							(A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) ! if{
+							#SIMVAR_INDEX_2# (&gt;K:#KEY_ID#)
+							}
+						</CODE_POS_2>
+						<STATE0_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) ! and </STATE0_TEST>
+						<STATE1_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) ! (A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) ! and </STATE1_TEST>
+						<STATE2_TEST> (A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#) (A:#ANIM_SIMVAR_2#, #ANIM_SIMVAR_UNITS#) and </STATE2_TEST>
+					</UseTemplate>
+				</Component>
+			</Case>
+			<Default>
+				<Component ID="#NODE_ID#" Node="#NODE_ID#">
+					<DefaultTemplateParameters>
+						<TOOLTIPID>%((A:#ANIM_SIMVAR#, #ANIM_SIMVAR_UNITS#))%{if}TT:COCKPIT.TOOLTIPS.#LIGHT_TYPE#_LIGHT_ON %{else}TT:COCKPIT.TOOLTIPS.#LIGHT_TYPE#_LIGHT_OFF%{end}</TOOLTIPID>
+					</DefaultTemplateParameters>
+					<Switch Param="INTERACTION">
+						<Case Value="Push">
+							<UseTemplate Name="ASOBO_GT_Push_Button_Airliner">
+								<LEFT_SINGLE_CODE>#SIMVAR_LEFT_SINGLE_CODE#</LEFT_SINGLE_CODE>
+								<ONLY_SEQ1/>
+								<SEQ1_EMISSIVE_CODE>(A:#ANIM_SIMVAR#, Bool)</SEQ1_EMISSIVE_CODE>
+							</UseTemplate>
+						</Case>
+						<Default>
+							<UseTemplate Name="ASOBO_GT_Switch_Code">
+								<LEFT_SINGLE_CODE>#SIMVAR_LEFT_SINGLE_CODE#</LEFT_SINGLE_CODE>
+							</UseTemplate>
+						</Default>
+					</Switch>
+				</Component>
+			</Default>
+		</Switch>
+	</False>
+</Condition>
 </Template>
 
 <Template Name="ASOBO_LIGHTING_Knob_SubTemplate">	

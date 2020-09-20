@@ -305,6 +305,8 @@
 <Template Name="ASOBO_LIGHTING_Switch_Light_Logo_Template">
 	<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Template">
 		<LIGHT_TYPE>LOGO</LIGHT_TYPE>
+		<WWISE_EVENT_1>logo_light_switch_on</WWISE_EVENT_1>
+		<WWISE_EVENT_2>logo_light_switch_off</WWISE_EVENT_2>
 		<NORMALIZED_TIME_1>0.1</NORMALIZED_TIME_1>
 		<NORMALIZED_TIME_2>0.5</NORMALIZED_TIME_2>	
 	</UseTemplate>
