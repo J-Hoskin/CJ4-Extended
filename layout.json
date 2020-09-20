@@ -228,7 +228,7 @@
     {
       "path": "SimObjects/Airplanes/Asobo_CJ4/model/CJ4_Cockpit.xml",
       "size": 59812,
-      "date": 132427734996557379
+      "date": 132427734996357379
     },
     {
       "path": "ModelBehaviorDefs/Asobo/Common/Subtemplates/Lighting_Subtemplates.xml",
@@ -243,7 +243,30 @@
     {
       "path": "html_ui/Pages/VCockpit/Instruments/Airliners/Shared/BaseAirliners.js",
       "size": 70011,
-      "date": 132427734996557388
+      "date": 132487734996357788
+    },
+
+    {
+      "path": "SimObjects/Airplanes/Asobo_CJ4/panel/panel.xml",
+      "size": 59812,
+      "date": 132727737996507379
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_CJ4/sound/sound.xml",
+      "size": 59812,
+      "date": 132717734996507479
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_CJ4/sound/Asobo_CJ4_Extended.PC.PCK",
+      "size": 59812,
+      "date": 142422734996956379
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_CJ4/sound/Asobo_CJ4.PC.PCK",
+      "size": 59812,
+      "date": 142427734996952389
     }
+
+
   ]
 }
