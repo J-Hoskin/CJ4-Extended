@@ -52,8 +52,8 @@ As the feature uses PNG images for charts, you are free to source airport charts
 Repeat for each airport:
 - Create a new folder with the exact ICAO name of the desired airport in the `html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts` folder
 - Create the folders: `Arrivals`, `Airport`, `Deperature`, `Approach`
-- Drop your charts for the airport in the relevant folder. Images must be PNGs and must have the ICAO name of the airport followed by a `-` and the page number starting from 1. Ex. `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder.
-- Add to the layout.JSON file the path of the images you just added (if this charting feature is liked, this will be automated in future). Ex.
+- Drop your charts for the airport in the relevant folder. Images must be PNGs and must have the ICAO name of the airport followed by a `-` and the page number starting from 1. Example: `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder.
+- Add to the layout.JSON file the path of the images you just added (if this charting feature is liked, this will be automated in future). Example:
   ```
   {
     "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-1.png",
