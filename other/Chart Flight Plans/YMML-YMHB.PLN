@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Melbourne Intl to Hobart</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>9000.000</CruisingAlt>
+        <DepartureID>YMML</DepartureID>
+        <DepartureLLA>S37° 39' 55.78",E144° 50' 11.61",+000391.00</DepartureLLA>
+        <DestinationID>YMHB</DestinationID>
+        <DestinationLLA>S42° 50' 12.89",E147° 30' 46.12",+000012.50</DestinationLLA>
+        <Descr>Melbourne Intl to Hobart</Descr>
+        <DepartureName>Melbourne Intl</DepartureName>
+        <DestinationName>Hobart</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="YMML">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>S37° 39' 55.78",E144° 50' 11.61",+000391.00</WorldPosition>
+            <RunwayNumberFP>16</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>YMML</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YARRA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S37° 50' 30.00",E144° 52' 12.00",+002550.00</WorldPosition>
+            <DepartureFP>SUNTI3</DepartureFP>
+            <RunwayNumberFP>16</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>YARRA</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUNTI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S38° 30' 27.92",E145° 12' 48.66",+009000.00</WorldPosition>
+            <DepartureFP>SUNTI3</DepartureFP>
+            <RunwayNumberFP>16</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>SUNTI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUNTI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S38° 30' 27.92",E145° 12' 48.66",+008000.00</WorldPosition>
+            <ATCAirway>H169</ATCAirway>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>SUNTI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BENZO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S40° 0' 0.69",E145° 53' 0.13",+009000.00</WorldPosition>
+            <ATCAirway>H169</ATCAirway>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>BENZO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IRSOM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S41° 10' 11.99",E146° 26' 3.24",+009000.00</WorldPosition>
+            <ATCAirway>V33</ATCAirway>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>IRSOM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIFFY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S41° 39' 0.00",E146° 44' 18.00",+009000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>LIFFY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MORGO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 10' 18.01",E147° 4' 39.88",+009000.00</WorldPosition>
+            <ArrivalFP>MORG1A</ArrivalFP>
+            <RunwayNumberFP>12</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>MORGO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VAVMO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 23' 42.64",E147° 7' 55.07",+006500.00</WorldPosition>
+            <ArrivalFP>MORG1A</ArrivalFP>
+            <RunwayNumberFP>12</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>VAVMO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IKOBI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 31' 43.38",E147° 9' 52.37",+004850.00</WorldPosition>
+            <ArrivalFP>MORG1A</ArrivalFP>
+            <RunwayNumberFP>12</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>IKOBI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BUSKA">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 37' 50.35",E147° 14' 6.74",+003500.00</WorldPosition>
+            <ArrivalFP>MORG1A</ArrivalFP>
+            <RunwayNumberFP>12</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>BUSKA</ICAOIdent>
+                <ICAOAirport>YMHB</ICAOAirport>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="YMHB">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>S42° 50' 12.89",E147° 30' 46.12",+000000.00</WorldPosition>
+            <SuffixFP>Z</SuffixFP>
+            <ApproachTypeFP>ILS</ApproachTypeFP>
+            <RunwayNumberFP>12</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>YMHB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>

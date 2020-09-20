@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<SimBase.Document Type="AceXML" version="1,0">
+    <Descr>AceXML Document</Descr>
+    <FlightPlan.FlightPlan>
+        <Title>Hobart to Melbourne Intl</Title>
+        <FPType>IFR</FPType>
+        <RouteType>LowAlt</RouteType>
+        <CruisingAlt>10000.000</CruisingAlt>
+        <DepartureID>YMHB</DepartureID>
+        <DepartureLLA>S42° 50' 12.89",E147° 30' 46.12",+000012.50</DepartureLLA>
+        <DestinationID>YMML</DestinationID>
+        <DestinationLLA>S37° 39' 55.78",E144° 50' 11.61",+000391.00</DestinationLLA>
+        <Descr>Hobart to Melbourne Intl</Descr>
+        <DepartureName>Hobart</DepartureName>
+        <DestinationName>Melbourne Intl</DestinationName>
+        <AppVersion>
+            <AppVersionMajor>11</AppVersionMajor>
+            <AppVersionBuild>282174</AppVersionBuild>
+        </AppVersion>
+        <ATCWaypoint id="Hobart">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>S42° 50' 12.89",E147° 30' 46.12",+000012.50</WorldPosition>
+            <ICAO>
+                <ICAOIdent>YMHB</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="TOKAX">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 47' 53.36",E147° 27' 36.89",+000650.00</WorldPosition>
+            <DepartureFP>CLARK2</DepartureFP>
+            <RunwayNumberFP>30</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>TOKAX</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IKETU">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 34' 42.52",E147° 9' 36.43",+004400.00</WorldPosition>
+            <DepartureFP>CLARK2</DepartureFP>
+            <RunwayNumberFP>30</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>IKETU</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="CLARK">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 28' 24.00",E147° 0' 42.00",+006200.00</WorldPosition>
+            <DepartureFP>CLARK2</DepartureFP>
+            <RunwayNumberFP>30</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>CLARK</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MORGO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S42° 10' 18.01",E147° 4' 39.88",+009850.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>MORGO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="LIFFY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S41° 39' 0.00",E146° 44' 18.00",+010000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>LIFFY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="IRSOM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S41° 10' 11.99",E146° 26' 3.24",+010000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>IRSOM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="BENZO">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S40° 0' 0.69",E145° 53' 0.13",+010000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>BENZO</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="SUNTI">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S38° 30' 27.92",E145° 12' 48.66",+010000.00</WorldPosition>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>SUNTI</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="WAREN">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S38° 1' 0.00",E145° 18' 42.00",+007250.00</WorldPosition>
+            <ArrivalFP>WARE7A</ArrivalFP>
+            <RunwayNumberFP>27</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>WAREN</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MICHM">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S37° 50' 42.00",E145° 11' 30.00",+004900.00</WorldPosition>
+            <ArrivalFP>WARE7A</ArrivalFP>
+            <RunwayNumberFP>27</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>MICHM</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="MONTY">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S37° 43' 30.00",E145° 6' 42.00",+003250.00</WorldPosition>
+            <ArrivalFP>WARE7A</ArrivalFP>
+            <RunwayNumberFP>27</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>MONTY</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="VISAS">
+            <ATCWaypointType>Intersection</ATCWaypointType>
+            <WorldPosition>S37° 40' 17.53",E145° 1' 35.32",+002200.00</WorldPosition>
+            <ArrivalFP>WARE7A</ArrivalFP>
+            <RunwayNumberFP>27</RunwayNumberFP>
+            <ICAO>
+                <ICAORegion>YM</ICAORegion>
+                <ICAOIdent>VISAS</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+        <ATCWaypoint id="Melbourne Intl">
+            <ATCWaypointType>Airport</ATCWaypointType>
+            <WorldPosition>S37° 39' 55.78",E144° 50' 11.61",+000400.00</WorldPosition>
+            <ApproachTypeFP>ILS</ApproachTypeFP>
+            <RunwayNumberFP>27</RunwayNumberFP>
+            <ICAO>
+                <ICAOIdent>YMML</ICAOIdent>
+            </ICAO>
+        </ATCWaypoint>
+    </FlightPlan.FlightPlan>
+</SimBase.Document>
