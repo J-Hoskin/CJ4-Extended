@@ -7,7 +7,8 @@ This project extends upon the features of the Citation CJ4 aircraft in Microsoft
 - Air and heat knob animation functionality (Pilot, Copilot, and Cabin Fan, Cockpit and Cabin Temperature, Climate Control)
 - Seatbelt lights and chime
 - Static airport charting functionality (first of its kind?)
-- Flight log FMS page (Take-off time, time en-route, esitmated landing time, used fuel)
+- Flight log FMS page (Take-off time, time en-route, landing time, fuel used)
+- FMS Perf Menu with `PERF` button functionality
 - Fixed FMS styling bugs
 - UTC clock and RAT functionality on MFD and PFD
 - Significant fuel performance improvements
