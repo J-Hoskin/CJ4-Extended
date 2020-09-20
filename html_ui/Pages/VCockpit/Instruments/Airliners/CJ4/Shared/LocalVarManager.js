@@ -10,6 +10,16 @@ class LocalVarManager {
                 varName: "L:TAKEOFF_TIME",
                 type: "seconds",
                 selector: this._updateTakeOffTime,
+            },
+            {
+                varName: "L:LANDING_TIME",
+                type: "seconds",
+                selector: this._updateLandingTime,
+            },
+            {
+                varName: "L:ENROUTE_TIME",
+                type: "seconds",
+                selector: this._enrouteLandingTime,
             }
         ];
 
@@ -17,7 +27,6 @@ class LocalVarManager {
         SimVar.SetSimVarValue("L:SEATBELT_LIGHT_ON", "Bool", 0);
         SimVar.SetSimVarValue("L:SAFETY_LIGHT_ON", "Bool", 0);
         SimVar.SetSimVarValue("L:STARTING_FUEL", "gallons", SimVar.GetSimVarValue("FUEL TOTAL QUANTITY", "gallons"));
-        SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", 0);
 
         // Chart variables
         SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1); // Arrival airport aerodrome
@@ -41,7 +50,7 @@ class LocalVarManager {
     _updateTakeOffTime() {
         const takeOffTime = SimVar.GetSimVarValue("L:TAKEOFF_TIME", "seconds");
 
-        if (takeOffTime == 0){
+        if (!takeOffTime){
             const onGround = SimVar.GetSimVarValue("SIM ON GROUND", "Bool");
             const altitude = SimVar.GetSimVarValue("GPS POSITION ALT", "number");
 
@@ -52,10 +61,31 @@ class LocalVarManager {
                 }
             }
         }
+    }
 
-        // if(onGround && SimVar.GetSimVarValue("L:TAKEOFF_TIME", "number") !== undefined){
-        //     SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", undefined);
-        // }
+    _updateLandingTime() {
+        const takeOffTime = SimVar.GetSimVarValue("L:TAKEOFF_TIME", "seconds");
+
+        if(takeOffTime){
+            const onGround = SimVar.GetSimVarValue("SIM ON GROUND", "Bool");
+
+            if (onGround){
+                const localTime = SimVar.GetGlobalVarValue("LOCAL TIME", "seconds");
+                if(localTime){
+                    SimVar.SetSimVarValue("L:LANDING_TIME", "seconds", localTime);
+                }
+            }
+        }
+    }
+
+    _enrouteLandingTime(){
+        const takeOffTime = SimVar.GetSimVarValue("L:TAKEOFF_TIME", "seconds");
+
+        if(takeOffTime){
+            const localTime = SimVar.GetGlobalVarValue("LOCAL TIME", "seconds");
+            const enrouteTime = localTime - takeOffTime;
+            SimVar.SetSimVarValue("L:ENROUTE_TIME", "seconds", enrouteTime);
+        }
     }
 
 }

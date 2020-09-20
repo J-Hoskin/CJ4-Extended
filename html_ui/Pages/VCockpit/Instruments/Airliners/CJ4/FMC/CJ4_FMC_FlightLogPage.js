@@ -6,29 +6,36 @@ class CJ4_FMC_FlightLogPage {
         let takeOffTimeString = "";
         const takeOffTime = SimVar.GetSimVarValue("L:TAKEOFF_TIME", "seconds");
         if(takeOffTime){
-            const takeOffDate = new Date(takeOffTime * 1000); // convert to milliseconds
-            const takeOffHours = takeOffDate.getHours() > 9 ? "" + takeOffDate.getHours() : "0" + takeOffDate.getHours();
-            const takeOffMinutes = takeOffDate.getMinutes() > 9 ? "" + takeOffDate.getMinutes() : "0" + takeOffDate.getMinutes();
-            takeOffTimeString = takeOffHours + ":" + takeOffMinutes;
+            const hours = Math.floor(takeOffTime / 60 / 60);
+            const hoursString = hours > 9 ? "" + hours : "0" + hours;
+
+            const minutes = Math.floor(takeOffTime / 60) - (hours * 60);
+            const minutesString = minutes > 9 ? "" + minutes : "0" + minutes;
+            takeOffTimeString = hoursString + ":" + minutesString;
         }
 
-        // Calculate enroute time
+        // Enroute time
         let enrouteTimeString = "";
-        const enrouteTime = SimVar.GetSimVarValue("GPS ETE", "seconds");
-        if(enrouteTime !== undefined){
-            const enrouteHours = (enrouteTime / 3600).toFixed(0) > 9 ? "" + (enrouteTime / 3600).toFixed(0) : "0" + (enrouteTime / 3600).toFixed(0);
-            const enrouteMinutes = ((enrouteTime % 3600) / 60).toFixed(0);
-            enrouteTimeString =  enrouteHours + ":" + enrouteMinutes;
+        const enrouteTime = SimVar.GetSimVarValue("L:ENROUTE_TIME", "seconds");
+        if(enrouteTime){
+            const hours = Math.floor(enrouteTime / 60 / 60);
+            const hoursString = hours > 9 ? "" + hours : "0" + hours;
+
+            const minutes = Math.floor(enrouteTime / 60) - (hours * 60);
+            const minutesString = minutes > 9 ? "" + minutes : "0" + minutes;
+            enrouteTimeString = hoursString + ":" + minutesString;
         }
 
-        // Calculate landing time
+        // Landing time
         let landingTimeString = "";
-        if(takeOffTime && enrouteTime){
-            const landingTime = takeOffTime + enrouteTime;
-            const landingDate = new Date(landingTime * 1000); // convert to milliseconds
-            const landingHour = landingDate.getHours() > 9 ? "" + landingDate.getHours() : "0" + landingDate.getHours();
-            const landingMinute = landingDate.getMinutes() > 9 ? "" + landingDate.getMinutes() : "0" + landingDate.getMinutes();
-            landingTimeString = landingHour + ":" + landingMinute;
+        const landingTime = SimVar.GetSimVarValue("L:LANDING_TIME", "seconds");
+        if(landingTime){
+            const hours = Math.floor(landingTime / 60 / 60);
+            const hoursString = hours > 9 ? "" + hours : "0" + hours;
+
+            const minutes = Math.floor(landingTime / 60) - (hours * 60);
+            const minutesString = minutes > 9 ? "" + minutes : "0" + minutes;
+            landingTimeString = hoursString + ":" + minutesString;
         }
 
         // Calculate fuel usage (Currently resets if fuel increased during flight)
@@ -40,16 +47,6 @@ class CJ4_FMC_FlightLogPage {
         }
         const fuelUsed = (startingFuel - currentFuel).toFixed(0);
 
-        // Calculate planned flight ground distance
-        let flightPlanManagerWaypoints = fmc.flightPlanManager.getWaypoints();
-        let totalWaypointDistance = 0;
-
-        for(let i = 0; i < flightPlanManagerWaypoints.length; i++) {
-            let waypoint = flightPlanManagerWaypoints[i];
-            let nextWaypointDistance = isFinite(waypoint.cumulativeDistanceInFP) ? waypoint.cumulativeDistanceInFP.toFixed(0) : 0;
-            totalWaypointDistance += Number.parseInt(nextWaypointDistance);
-        }
-
         fmc.setTemplate([
             ["FLIGHT LOG"],
             ["T/O", "LDG", "EN ROUTE"],
@@ -58,8 +55,8 @@ class CJ4_FMC_FlightLogPage {
             ["FUEL USED", "AVG TAS/GS"],
             [fuelUsed + " GAL", ""],
             ["", ""],
-            ["TOTAL GND DIST"],
-            [totalWaypointDistance.toString()],
+            ["AIR DIST", "GND DIST", ""],
+            [],
             [""],
             [""],
             ["__FMCSEPARATOR"],
