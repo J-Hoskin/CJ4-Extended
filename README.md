@@ -39,7 +39,7 @@ This add-on adds the ability to load airport charts onto the MFD of the CJ4. Thi
 
 ### Sourcing Charts
 
-As the feature uses PNG images for charts, you are free to source airport charts from any provider.
+As the feature uses PNG images for charts, you are free to source airport charts from any provider. An image size around 1166W x 1654H works well. A shorter height if no scrolling is desired. Greater widths are not recommended as there currently is no horizontal scrolling implemented.
 
 **Free and no signup**
 
@@ -62,7 +62,6 @@ Repeat for each airport:
     "date": 132427734999577511
   },
   ```
-
 
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
