@@ -565,7 +565,7 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
 
         // Manage scrolling
         const scrollPosition = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
-        let dimmingClass = "night";
+        let dimmingClass = "day";
         if(SimVar.GetSimVarValue("L:CHART_DIMMING", "number") == 2){
             dimmingClass = "night";
         }
@@ -583,7 +583,7 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
             this.root.querySelector(".chartName").textContent = "No airport selected";
             this.root.querySelector(".chartType").textContent = "";
             this.root.querySelector(".airportChart")
-                .setAttribute('style', "background: black");
+                .setAttribute('style', "background: black"); // this doesn't seem to fix white background image on failed load
         }
 
     }
