@@ -9,7 +9,8 @@ This project extends upon the features of the Citation CJ4 aircraft in Microsoft
 - Static airport charting functionality (first of its kind?)
 - Flight log FMS page (Take-off time, time en-route, esitmated landing time, used fuel)
 - Fixed FMS styling bugs
-- UTC clock functionality on MFD and PFD
+- UTC clock and RAT functionality on MFD and PFD
+- Significant fuel performance improvements
 
 If you have knowledge around the systems in the CJ4 and would like to contribute, please contact me on Discord at Hosky#6451. If you would like to contribute to development, feel free to submit a pull request. A list of features can be found in the 'Issues' tab.
 
@@ -75,5 +76,9 @@ Repeat for each airport:
 - MSFS2020 makes up the taxiways of airports, and as such, stock ATC directions are unlikely to correspond with your airport charts.
 - The following instructions have to be followed exactly for the feature to work.
 
-
-
+## Credits
+Thanks goes to:
+[Soberat](https://www.nexusmods.com/microsoftflightsimulator/mods/225) for RAT code
+[Vaporized_Butter](https://www.nexusmods.com/microsoftflightsimulator/mods/8) for fuel improvements
+[dga711](https://github.com/dga711/devtools-backend-refurb) for devtools which kept me barely sane
+[FlyByWire Team](https://github.com/flybywiresim) for trailblazing addon development
