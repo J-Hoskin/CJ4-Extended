@@ -44,6 +44,7 @@ As the feature uses PNG images for charts, you are free to source airport charts
 
 **Free and no signup**
 
+Most of these resources are PDFs. To convert to PNGs, a tool such as [pdf2png](https://pdf2png.com/) can be used.
 - Australia: [Air Services Australia](https://www.airservicesaustralia.com/aip/current/dap/AeroProcChartsTOC.htm) - Very high quality
 - USA: [FAA](https://www.faa.gov/airports/runway_safety/diagrams/), [SkyVector](https://skyvector.com/)
 - Germany [Vatsim Germany](https://vatsim-germany.org/pilots/aerodromes) - Other Vatsim communities have charts too
