@@ -563,16 +563,15 @@ cj4-mfd-element {
           width: 100% !important;
           height: 100%;
           background-repeat: no-repeat;
+          background-color: #000000 !important;
           background-size: cover;
           color: white;
           margin-top: 3%;
         }
         .night {
-          background-color: black !important;
           filter: invert(100%);
         }
         .day {
-          background-color: white !important;
           filter: invert(0%);
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart p {
