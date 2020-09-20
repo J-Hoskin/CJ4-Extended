@@ -18,16 +18,19 @@ If you have knowledge around the systems in the CJ4 and would like to contribute
 - [Releases](https://github.com/J-Hoskin/CJ4-Extended/releases)
 
 ## Installation
-Installation requires that you place the "CJ4-Extended" folder into the "Community" folder of your MSFS2020 installation. The location of the "Community" folder depends on what platform you run MSFS2020 on.
+Installation requires that you place the "CJ4-Extended" folder into the "Community" folder of your MSFS2020 installation. The location of the "Community" folder depends on what platform you run MSFS2020 on. Potential directories include:
 
 **Microsoft Store / Gamepass edition:**
-- C:\Users\[USER]\AppData\Local\Packages\Microsoft.FlightSimulator_<RANDOMLETTERS>\LocalCache\Packages\Community
+
+`C:\Users\[USER]\AppData\Local\Packages\Microsoft.FlightSimulator_<RANDOMLETTERS>\LocalCache\Packages\Community`
   
 **For the Steam edition:**
-- C:\Users\[USER]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community
+
+`C:\Users\[USER]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community`
 
 **For the Boxed edition:**
-- C:\Users\[USER]\AppData\Local\MSFSPackages\Community
+
+`C:\Users\[USER]\AppData\Local\MSFSPackages\Community`
 
 ## Setting up and Using Airport Charts
 ![image](https://user-images.githubusercontent.com/48885195/93568759-f7db9500-f9d3-11ea-8800-b051b0641765.png)
