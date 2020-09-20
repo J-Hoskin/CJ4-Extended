@@ -36,7 +36,7 @@ Installation requires that you place the "CJ4-Extended-[VERSION #]" folder into 
 
 ## Setting up and Using Airport Charts
 ![image](https://user-images.githubusercontent.com/48885195/93709529-2d25e580-fb82-11ea-821e-ecb2a48a5e72.png)
-This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup. There are some charts included for Melbourne and Hobart in Australia. You can load the flight plans in the `other/Chart Flight Plans` directory to try the feature before setting it up your own.
+This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup. There are some charts included for Melbourne and Hobart in Australia. You can load the flight plans in the `other/Chart Flight Plans` directory to try the feature before setting it up on your own.
 
 ### Sourcing Charts
 
@@ -63,17 +63,16 @@ Run the `build.py` python script to load all of the new charts into the addon's 
 
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
-- Press the `Chart` button in the lower control panel to open the chart display
+- Press the `CHART` button in the lower control panel to open the chart display
 - Press the `LWR MENU` button with the chart display open to open the Main Chart Index Menu. Here you can select the type of chart you wish to view. You can also switch the chart to dark mode by selecting `Chart Dimming`.
-- Use the pan joystick next to the `Chart` button to scroll your chart.
+- Use the pan joystick next to the `CHART` button to scroll your chart.
 - Use the outer turn knob to load the next chart ('page') in the relevant folder.
 
 ### Feature Notes
 - Current chart implementation is done through static images, meaning they will not show your aircraft's position on them.
 - MSFS2020 makes up the taxiways of airports, and as such, stock ATC directions are unlikely to correspond with your airport charts.
-- The following instructions have to be followed exactly for the feature to work.
 - The charting feature will not automatically load the chart for your set approach. You will have to navigate through the pages to it.
-- If night mode makes elements had to see on your chart, you can always dim the MFD on day mode.
+- If night mode makes elements hard to see on your chart, you can always dim the MFD when on day mode.
 
 ## Credits
 Thanks goes to:
