@@ -3383,24 +3383,24 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
             this.beginSection();
             {
                 this.addTitle("ORIGIN - " + this.originAirport, this.textSize, 0.45);
-                this.addTextItem("AIRPORT ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
-                this.addTextItem("DEPARTURE ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], " [ SIDS ] ");
+                this.addTextItem("AIRPORT ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "AIRPORT, AIRPORT INFO, TAKE-OFF MNMS");
+                this.addTextItem("DEPARTURE ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "SIDS");
                 this.addSmallBlankItem();
-                this.addTextItem("ARRIVAL ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ STARS ]");
-                this.addTextItem("APPROACH ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ALL ]");
-                this.addTextItem("ANY CHART ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED]," [ ALL ] ");
+                this.addTextItem("ARRIVAL ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "STARS");
+                this.addTextItem("APPROACH ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "ALL");
+                this.addTextItem("ANY CHART ", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED],"ALL");
                 this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();
             this.beginSection();
             {
                 this.addTitle("DESTINATION - " + this.destinationAirport, this.textSize, 0.45);
-                this.addTextItem("ARRIVAL", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ STARS ]");
-                this.addTextItem("APPROACH", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ ALL ]");
-                this.addTextItem("AIRPORT", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ AIRPORT, AIRPORT INFO, TAKE-OFF MNMS ]");
+                this.addTextItem("ARRIVAL", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "STARS");
+                this.addTextItem("APPROACH", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "ALL");
+                this.addTextItem("AIRPORT", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "AIRPORT, AIRPORT INFO, TAKE-OFF MNMS");
                 this.addSmallBlankItem();
-                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "[ SIDS ]");
-                this.addTextItem("ANY CHART", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], " [ ALL ] ");
+                this.addTextItem("DEPARTURE", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "SIDS");
+                this.addTextItem("ANY CHART", this.textSize, [CJ4_PopupMenu_Key.CHART_SELECTED], "ALL");
                 this.addTextItem("CHART NOTAMS --", this.textSize, null);
             }
             this.endSection();

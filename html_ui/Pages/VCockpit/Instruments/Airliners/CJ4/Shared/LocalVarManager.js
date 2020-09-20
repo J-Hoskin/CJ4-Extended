@@ -16,10 +16,14 @@ class LocalVarManager {
         // Setup variables
         SimVar.SetSimVarValue("L:SEATBELT_LIGHT_ON", "Bool", 0);
         SimVar.SetSimVarValue("L:SAFETY_LIGHT_ON", "Bool", 0);
-        SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
         SimVar.SetSimVarValue("L:STARTING_FUEL", "gallons", SimVar.GetSimVarValue("FUEL TOTAL QUANTITY", "gallons"));
         SimVar.SetSimVarValue("L:TAKEOFF_TIME", "seconds", 0);
-        SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1);
+
+        // Chart variables
+        SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1); // Arrival airport aerodrome
+        SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1); // Day dimming
+        SimVar.SetSimVarValue("L:CHART_SCROLL_POSITION", "number", 0);
+        SimVar.SetSimVarValue("L:CHART_PAGE", "number", 1);
     }
 
     update() {

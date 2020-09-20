@@ -528,7 +528,7 @@ cj4-mfd-element {
           width: 100%;
           height: 73.5%;
           bottom: 3%;
-          color: white;
+          color: white !important;
           border: none;
           max-height: 100%;
           max-width: 100%;
@@ -542,47 +542,42 @@ cj4-mfd-element {
           background-color: black;
           text-align: left;
           padding-left: 50px;
-          color: white;
+          color: white !important;
           border: none;
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .chartHeader .chartName  {
           float: left;
           font-size: calc( 1.95 * 1vh * var(--bodyHeightScale));
           height: 100%;
+          color: white;
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .chartHeader .chartType  {
           float: left;
           margin-left: 50px;
           font-size: calc( 1.95 * 1vh * var(--bodyHeightScale));
           height: 100%;
+          color: white;
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart {
           height: 100% !important;
           width: 100% !important;
-        }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart {
-          height: 100% !important;
-          width: 100% !important;
-        }
-        .black {
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          color: white;
           background-color: black !important;
-        }
-        .white {
-          background-color: white !important;
-        }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart img {
-          text-align: center;
-          font-size: 24px;
-          max-width: 100% !important;
-          /*max-height: 100% !important;*/
           margin-top: 3%;
-          border: none;
+        }
+        .night {
+          background-color: black !important;
+          filter: invert(100%);
+        }
+        .day {
+          background-color: white !important;
+          filter: invert(0%);
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart p {
           font-size: 24px;
-        }
-        cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .airportChart .inverted{
-          filter: invert(100%);
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart[visible=false] {
           display: none; }

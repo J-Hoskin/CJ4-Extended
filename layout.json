@@ -95,8 +95,6 @@
       "size": 841,
       "date": 132427734996557377
     },
-
-
     {
       "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/CJ4_MFD.css",
       "size": 25256,
@@ -118,92 +116,82 @@
       "date": 132427734999577502
     },
     {
-          "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YPAD.png",
+          "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Aerodrome/YPAD-1.png",
           "size": 568618,
           "date": 132427734999577504
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/YPAD2.png",
-      "size": 568618,
-      "date": 132427734999577504
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Airport/YPAD/YPAD-1.png",
-      "size": 568618,
-      "date": 132427734999577504
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Airport/YBCS/YBCS-1.png",
-      "size": 568618,
-      "date": 132427734999577508
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Airport/YBBN/YBBN-1.png",
-      "size": 568618,
-      "date": 132427734999577579
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Arrival/YPAD/YPAD-1.png",
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Arrival/YPAD-1.png",
       "size": 568618,
       "date": 132427734999577609
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Arrival/YPAD/YPAD-2.png",
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Arrival/YPAD-2.png",
       "size": 568618,
       "date": 132427734999577309
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Arrival/YBCS/YBCS-1.png",
-      "size": 568618,
-      "date": 132427734999517509
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Arrival/YBCS/YBCS-2.png",
-      "size": 568618,
-      "date": 132427734999527509
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Departure/YPAD/YPAD-1.png",
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Departure/YPAD-1.png",
       "size": 568618,
       "date": 132427734999575509
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Departure/YPAD/YPAD-2.png",
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Departure/YPAD-2.png",
       "size": 568618,
       "date": 132427734999577409
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Departure/YBCS/YBCS-1.png",
-      "size": 568618,
-      "date": 132427734999577518
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Departure/YBCS/YBCS-2.png",
-      "size": 568618,
-      "date": 132427734999577514
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Approach/YBCS/YBCS-1.png",
-      "size": 568618,
-      "date": 132427734999577513
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Approach/YBCS/YBCS-2.png",
-      "size": 568618,
-      "date": 132427734999577512
-    },
-    {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Approach/YPAD/YPAD-1.png",
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-1.png",
       "size": 568618,
       "date": 132427734999577511
     },
     {
-      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images/Approach/YPAD/YPAD-2.png",
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-2.png",
       "size": 568618,
       "date": 132427734999577510
     },
-
-
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-3.png",
+      "size": 568618,
+      "date": 132427734999677511
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YBCS/Aerodrome/YBCS-1.png",
+      "size": 568618,
+      "date": 132427734999577508
+    },
+    
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YBCS/Arrival/YBCS-1.png",
+      "size": 568618,
+      "date": 132427734999517509
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YBCS/Arrival/YBCS-2.png",
+      "size": 568618,
+      "date": 132427734999527509
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/Departure/YBCS/YBCS-1.png",
+      "size": 568618,
+      "date": 132427734999577518
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/Departure/YBCS/YBCS-2.png",
+      "size": 568618,
+      "date": 132427734999577514
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/Approach/YBCS/YBCS-1.png",
+      "size": 568618,
+      "date": 132427734999577513
+    },
+    {
+      "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/Approach/YBCS/YBCS-2.png",
+      "size": 568618,
+      "date": 132427734999577512
+    },
+    
     {
       "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/Shared/LocalVarManager.js",
       "size": 292508,
@@ -224,7 +212,6 @@
       "size": 28526,
       "date": 132427734996557378
     },
-
     {
       "path": "SimObjects/Airplanes/Asobo_CJ4/model/CJ4_Cockpit.xml",
       "size": 59812,

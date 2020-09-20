@@ -180,6 +180,39 @@ class CJ4_MFD extends BaseAirliners {
                     this.popup.setMode(CJ4_PopupMenu.LOWER);
                 }
                 break;
+            case "Lwr_JOYSTICK_DOWN":
+                if(this.showChart){
+                    const currentScrollPosition = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
+                    if(currentScrollPosition > -350){
+                        SimVar.SetSimVarValue("L:CHART_SCROLL_POSITION", "number", currentScrollPosition - 10);
+                    }
+                }
+                break;
+            case "Lwr_JOYSTICK_UP":
+                if(this.showChart){
+                    const currentScrollPosition = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
+                    if(currentScrollPosition < 0){
+                        SimVar.SetSimVarValue("L:CHART_SCROLL_POSITION", "number", currentScrollPosition + 10);
+                    }
+                }
+                break;
+            case "Lwr_DATA_INC":
+                if(this.showChart){
+                    const currentChartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
+                    // 10 is an arbitrary page limit
+                    if(currentChartPage < 10){
+                        SimVar.SetSimVarValue("L:CHART_PAGE", "number", currentChartPage + 1);
+                    }
+                }
+                break;
+            case "Lwr_DATA_DEC":
+                if(this.showChart){
+                    const currentChartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
+                    if(currentChartPage > 1){
+                        SimVar.SetSimVarValue("L:CHART_PAGE", "number", currentChartPage - 1);
+                    }
+                }
+                break;
         }
     }
     allContainersReady() {
@@ -254,7 +287,6 @@ class CJ4_MFD extends BaseAirliners {
         }
         else if (chartSelection === "DEPARTURE ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 2);
-            this.selectedChart = 2;
             modeChanged = true;
         }
         else if (chartSelection === "ARRIVAL ") {
@@ -280,14 +312,6 @@ class CJ4_MFD extends BaseAirliners {
         else if (chartSelection === "DEPARTURE") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 8);
             modeChanged = true;
-        }
-
-        let chartDimming = _dict.get(CJ4_PopupMenu_Key.CHART_DIMMING);
-        if(chartDimming == "night"){
-            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 2);
-        }
-        else{
-            SimVar.SetSimVarValue("L:CHART_DIMMING", "number", 1);
         }
 
         let sysMode = _dict.get(CJ4_PopupMenu_Key.SYS_SRC);
@@ -533,71 +557,68 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
         }
 
         const chartTypeSelected = SimVar.GetSimVarValue("L:SELECTED_AIRPORT_CHART", "number");
-        let airportName = "";
-        let folder = "Airport";
-        let baseChartPath = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Images";
-        let fileType = ".png";
-        let chartPage = 1;
+        const baseChartPath = "/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts";
+        const chartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
+        const airportName = this.getSelectedAirportICAO(chartTypeSelected);
+        const chartFolder = this.getChartFolder(chartTypeSelected);
+        const chartImagePath = baseChartPath + "/" + airportName + "/" + chartFolder + "/" + airportName + "-" + chartPage + ".png";
 
-        // Airport info chart
-        let flightPlanManager = this.gps.currFlightPlanManager;
-        if(chartTypeSelected == 1 || chartTypeSelected == 2 || chartTypeSelected == 3 || chartTypeSelected == 4){
-            let origin = flightPlanManager.getOrigin();
-            if(origin){
-                airportName = origin.ident;
-            }
-            else{
-                airportName = "";
-            }
-        }
-        else if(chartTypeSelected == 5 || chartTypeSelected == 6 || chartTypeSelected == 7 || chartTypeSelected == 8){
-            let destination = flightPlanManager.getDestination();
-            if(destination){
-                airportName = destination.ident;
-            }
-            else{
-                airportName = "";
-            }
-        }
-
-        // Folder info
-        if(chartTypeSelected == 1 || chartTypeSelected == 7){
-            folder = "Airport";
-        }
-        else if(chartTypeSelected == 2 || chartTypeSelected == 8){
-            folder = "Departure";
-        }
-        else if(chartTypeSelected == 3 || chartTypeSelected == 5){
-            folder = "Arrival";
-        }
-        else if(chartTypeSelected == 4 || chartTypeSelected == 6){
-            folder = "Approach";
-        }
-
-        let chartImagePath = baseChartPath + "/" + folder + "/" + airportName + "/" + airportName + "-" + chartPage + fileType;
-
-        let dimmingClass;
+        // Manage scrolling
+        const scrollPosition = SimVar.GetSimVarValue("L:CHART_SCROLL_POSITION", "number");
+        let dimmingClass = "night";
         if(SimVar.GetSimVarValue("L:CHART_DIMMING", "number") == 2){
-            dimmingClass = "inverted";
-            this.root.querySelector(".airportChart")
-                .setAttribute('class', 'airportChart black');
+            dimmingClass = "night";
         }
-        else{
-            dimmingClass = "";
-            this.root.querySelector(".airportChart")
-                .setAttribute('class', 'airportChart white');
-        }
-
-        let html = '<img class="' + dimmingClass + '" src="' + chartImagePath +  '"/>';
 
         if(airportName != ""){
-            this.root.querySelector(".airportChart").innerHTML = html;
+            this.root.querySelector(".airportChart")
+                .setAttribute('style', "background-image: url('" + chartImagePath + "'); background-position-y:" + scrollPosition + 'px;"');
+
             this.root.querySelector(".chartName").textContent = airportName + " " + chartPage;
-            this.root.querySelector(".chartType").textContent = folder.toUpperCase();
+            this.root.querySelector(".chartType").textContent = chartFolder;
+            this.root.querySelector(".airportChart")
+                .setAttribute('class', 'airportChart' + ' ' + dimmingClass);
         }
         else{
-            this.root.querySelector(".airportChart").innerHTML = '<p>No chart available</p>';
+            this.root.querySelector(".chartName").textContent = "No airport selected";
+            this.root.querySelector(".chartType").textContent = "";
+            this.root.querySelector(".airportChart")
+                .setAttribute('style', "background: black");
         }
+
+    }
+    getSelectedAirportICAO(_chartTypeSelected) {
+        // Get airport ICAO
+        const flightPlanManager = this.gps.currFlightPlanManager;
+        if (_chartTypeSelected == 1 || _chartTypeSelected == 2 || _chartTypeSelected == 3 || _chartTypeSelected == 4) {
+            let origin = flightPlanManager.getOrigin();
+            if (origin) {
+                return origin.ident;
+            }
+        } else if (_chartTypeSelected == 5 || _chartTypeSelected == 6 || _chartTypeSelected == 7 || _chartTypeSelected == 8) {
+            let destination = flightPlanManager.getDestination();
+            if (destination) {
+                return destination.ident;
+            }
+        }
+        return "";
+    }
+    getChartFolder(_chartTypeSelected){
+        // Folder info
+        let folder = "Aerodrome";
+        if(_chartTypeSelected == 1 || _chartTypeSelected == 7){
+            folder = "Aerodrome";
+        }
+        else if(_chartTypeSelected == 2 || _chartTypeSelected == 8){
+            folder = "Departure";
+        }
+        else if(_chartTypeSelected == 3 || _chartTypeSelected == 5){
+            folder = "Arrival";
+        }
+        else if(_chartTypeSelected == 4 || _chartTypeSelected == 6){
+            folder = "Approach";
+        }
+        return folder;
     }
 
 }
