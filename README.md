@@ -64,7 +64,6 @@ The following steps need to be followed closely in order for the add-on to work.
     "date": 132427734999577511
   },
   ```
-The add-on comes with charts for two airports. You can use these as a reference and test the charting feature first.
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
 - Press the `Chart` button in the lower control panel to open the chart display
