@@ -49,12 +49,14 @@ As the feature uses PNG images for charts, you are free to source airport charts
 - World: [Opennav](https://opennav.com/airport/ZSPD) - Only some airports have charts attached
 - Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen) - Basic FSX charts
 
-### Adding airports charts must be done in the following way or the add-on won't work:
-Repeat for each airport:
+### Adding airports charts:
+The following steps need to be followed closely in order for the add-on to work. There are two airports included in the add-on for reference. You can setup a flight plan with these airports to test the feature before proceeding.
+
+**Repeat for each airport:**
 - Create a new folder with the exact ICAO name of the desired airport in the `html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts` folder
-- Create the folders: `Arrivals`, `Airport`, `Deperature`, `Approach`
-- Drop your charts for the airport in the relevant folder. Images must be PNGs and must have the ICAO name of the airport followed by a `-` and the page number starting from 1. Example: `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder.
-- Add to the layout.JSON file the path of the images you just added (if this charting feature is liked, this will be automated in future). Example:
+- Create the folders: `Arrivals`, `Airport`, `Deperature`, `Approach`, `Other`
+- Drop your charts for the airport in the relevant folders. Images must be PNGs. The chart file name must be: `[ICAO]-[PAGE NUMBER]`. Example: `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder. The `Other` folder can contain any charts such as apron charts.
+- Add to the layout.json file the path of the images you just added (if this charting feature is liked, this will be automated in future). Example:
   ```
   {
     "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-1.png",
@@ -62,7 +64,7 @@ Repeat for each airport:
     "date": 132427734999577511
   },
   ```
-
+The add-on comes with charts for two airports. You can use these as a reference and test the charting feature first.
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
 - Press the `Chart` button in the lower control panel to open the chart display
@@ -74,6 +76,7 @@ Repeat for each airport:
 - Current chart implementation is done through static images, meaning they will not show your aircraft's position on them.
 - MSFS2020 makes up the taxiways of airports, and as such, stock ATC directions are unlikely to correspond with your airport charts.
 - The following instructions have to be followed exactly for the feature to work.
+- The charting feature will not automatically load the chart for your set approach. You will have to navigate through the pages to it.
 
 ## Credits
 Thanks goes to:
