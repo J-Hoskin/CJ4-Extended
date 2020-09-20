@@ -5,7 +5,7 @@ This project extends upon the features of the Citation CJ4 aircraft in Microsoft
 
 **Current features**
 - Air and heat knob animation functionality (Pilot, Copilot, and Cabin Fan, Cockpit and Cabin Temperature, Climate Control)
-- Seatbelt lights and chime
+- Seatbelt lights and chime sounds
 - Static airport charting functionality (first of its kind?)
 - Flight log FMS page (Take-off time, time en-route, landing time, fuel used)
 - FMS Perf Menu with `PERF` button functionality
@@ -36,11 +36,11 @@ Installation requires that you place the "CJ4-Extended" folder into the "Communi
 
 ## Setting up and Using Airport Charts
 ![image](https://user-images.githubusercontent.com/48885195/93568759-f7db9500-f9d3-11ea-8800-b051b0641765.png)
-This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup.
+This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup. There are some charts included for Melbourne and Hobart in Australia. You can load the flight plans in the `other/Chart Flight Plans` directory to try the feature before setting it up your own.
 
 ### Sourcing Charts
 
-As the feature uses PNG images for charts, you are free to source airport charts from any provider. An image size around 1166W x 1654H works well. A shorter height if no scrolling is desired. Greater widths are not recommended as there currently is no horizontal scrolling implemented.
+As the feature uses PNG images for charts, you are free to source airport charts from any provider. An image size around 1166W x 1654H works well. A shorter height of X will not require scrolling. Greater widths are not recommended as there currently is no horizontal scrolling implemented.
 
 **Free and no signup**
 
@@ -52,7 +52,7 @@ Most of these resources are PDFs. To convert to PNGs, a tool such as [pdf2png](h
 - Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen) - Basic FSX charts
 
 ### Adding airports charts:
-The following steps need to be followed closely in order for the add-on to work. There are two airports included in the add-on for reference. You can setup a flight plan with these airports to test the feature before proceeding.
+The following steps need to be followed closely in order for the add-on to work.
 
 **Repeat for each airport:**
 - Create a new folder with the exact ICAO name of the desired airport in the `html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts` folder
@@ -73,6 +73,7 @@ Run the `build.py` python script to load all of the new charts into the addon's 
 - MSFS2020 makes up the taxiways of airports, and as such, stock ATC directions are unlikely to correspond with your airport charts.
 - The following instructions have to be followed exactly for the feature to work.
 - The charting feature will not automatically load the chart for your set approach. You will have to navigate through the pages to it.
+- If night mode makes elements had to see on your chart, you can always dim the MFD on day mode.
 
 ## Credits
 Thanks goes to:
