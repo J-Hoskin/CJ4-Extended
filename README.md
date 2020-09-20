@@ -46,18 +46,19 @@ As the feature uses PNG images for charts, you are free to source airport charts
 - Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen) - Basic FSX charts
 
 ### Adding airports charts must be done in the following way or the add-on won't work:
-
+Repeat for each airport:
 - Create a new folder with the exact ICAO name of the desired airport in the `html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts` folder
 - Create the folders: `Arrivals`, `Airport`, `Deperature`, `Approach`
-- Drop your charts for the airport in the relevant folder. Images must be PNGs and must have the ICAO name of the airport followed by the page number starting from 1. Ex. `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder.
-- Add to the layout.JSON file the path of the images you just added (if this charting feature is liked, this will be automated in future). Eg.
+- Drop your charts for the airport in the relevant folder. Images must be PNGs and must have the ICAO name of the airport followed by a `-` and the page number starting from 1. Ex. `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder.
+- Add to the layout.JSON file the path of the images you just added (if this charting feature is liked, this will be automated in future). Ex.
   ```
   {
     "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-1.png",
     "size": 568618,
     "date": 132427734999577511
-  },```
-- Repeat for each airport
+  },
+  ```
+
 
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
