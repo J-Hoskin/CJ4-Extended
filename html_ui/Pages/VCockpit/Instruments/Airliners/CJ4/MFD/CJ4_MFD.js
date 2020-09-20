@@ -197,7 +197,8 @@ class CJ4_MFD extends BaseAirliners {
                 }
                 break;
             case "Lwr_DATA_INC":
-                if(this.showChart){
+                // Prevent page scrolling when main chart index menu is open
+                if(this.showChart && this.popup.mode != CJ4_PopupMenu.LOWER_CHART){
                     const currentChartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
                     // 10 is an arbitrary page limit
                     if(currentChartPage < 10){
@@ -206,7 +207,8 @@ class CJ4_MFD extends BaseAirliners {
                 }
                 break;
             case "Lwr_DATA_DEC":
-                if(this.showChart){
+                // Prevent page scrolling when main chart index menu is open
+                if(this.showChart && this.popup.mode != CJ4_PopupMenu.LOWER_CHART){
                     const currentChartPage = SimVar.GetSimVarValue("L:CHART_PAGE", "number");
                     if(currentChartPage > 1){
                         SimVar.SetSimVarValue("L:CHART_PAGE", "number", currentChartPage - 1);
@@ -591,8 +593,6 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
         else{
             this.root.querySelector(".chartName").textContent = "No airport selected";
             this.root.querySelector(".chartType").textContent = "";
-            this.root.querySelector(".airportChart")
-                .setAttribute('style', "background: black"); // this doesn't seem to fix white background image on failed load
         }
 
     }
