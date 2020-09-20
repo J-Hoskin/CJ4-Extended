@@ -2821,6 +2821,10 @@ class CJ4_NavBarContainer extends NavSystemElementContainer {
         if (this.utcElement){
             this.utcElement.textContent = this.getUTCTime()
         }
+        if (this.ratElement) {
+            let temp = Math.floor(SimVar.GetSimVarValue("AMBIENT TEMPERATURE", "celsius"));
+            if (temp) this.ratElement.textContent = temp.toString();
+        }
     }
 }
 var CJ4_PopupMenu;
