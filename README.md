@@ -31,11 +31,11 @@ Installation requires that you place the "CJ4-Extended" folder into the "Communi
 
 ## Setting up and Using Airport Charts
 ![image](https://user-images.githubusercontent.com/48885195/93568759-f7db9500-f9d3-11ea-8800-b051b0641765.png)
-This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion.
+This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup.
 
 ### Sourcing Charts
 
-As the feature uses PNG images, you are free to source airport charts from any provider.
+As the feature uses PNG images for charts, you are free to source airport charts from any provider.
 
 **Free and no signup**
 
@@ -45,25 +45,31 @@ As the feature uses PNG images, you are free to source airport charts from any p
 - World: [Opennav](https://opennav.com/airport/ZSPD) - Only some airports have charts attached
 - Just aerodromes: [FSX charts](https://mutleyshangar.com/forum/index.php?/topic/23067-airport-diagram-download-center/#Queen) - Basic FSX charts
 
-### Adding airports charts must be done in the following way:
+### Adding airports charts must be done in the following way or the add-on won't work:
 
-- Create a folder in the /Charts folder with the exact ICAO name of airport
-- Create the folders Arrivals, Airport, Deperature, Approach
-- Drop your charts for the airport in the relevant folder. Images must be PNGs
-- Add to .layout file the path of the images you just added (if this charting feature is liked, this will be automated in future)
+- Create a new folder with the exact ICAO name of the desired airport in the `html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts` folder
+- Create the folders: `Arrivals`, `Airport`, `Deperature`, `Approach`
+- Drop your charts for the airport in the relevant folder. Images must be PNGs and must have the ICAO name of the airport followed by the page number starting from 1. Ex. `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder.
+- Add to the layout.JSON file the path of the images you just added (if this charting feature is liked, this will be automated in future). Eg.
+  ```
+  {
+    "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-1.png",
+    "size": 568618,
+    "date": 132427734999577511
+  },```
+- Repeat for each airport
 
 ### Using airport charts
-- First set an origin and/or a destination in the FMS
-- Press the chart button in the lower control panel to oepn the chart display
-- Press the LWR MENU button with chart display open to open the main chart index menu. Here you can select the chart you wish to view. You can also switch to chart to dark mode
-- Use the pan joystick next to the chart button to scroll your chart.
-- Use the turn knob to load next chart ('page') in the relevant folder.
+- First set an origin and/or a destination in the FMS, or from the main flight menu.
+- Press the `Chart` button in the lower control panel to open the chart display
+- Press the `LWR MENU` button with the chart display open to open the Main Chart Index Menu. Here you can select the type of chart you wish to view. You can also switch the chart to dark mode by selecting `Chart Dimming`.
+- Use the pan joystick next to the `Chart` button to scroll your chart.
+- Use the outer turn knob to load the next chart ('page') in the relevant folder.
 
 ### Feature Notes
 - Current chart implementation is done through static images, meaning they will not show your aircraft's position on them.
 - MSFS2020 makes up the taxiways of airports, and as such, stock ATC directions are unlikely to correspond with your airport charts.
 - The following instructions have to be followed exactly for the feature to work.
-
 
 
 
