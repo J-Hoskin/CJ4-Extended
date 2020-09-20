@@ -3344,9 +3344,9 @@ class CJ4_PopupMenu_LOWER_CHART extends CJ4_PopupMenu_Handler {
         this.textSize = 13;
         this.root = _root;
         this.dictionary = _dictionary;
-        this.menuLeft = 40;
+        this.menuLeft = 35;
         this.menuTop = 60;
-        this.menuWidth = 425;
+        this.menuWidth = 430;
         this.gps = _gps;
         this.showChartPage();
     }

@@ -535,7 +535,7 @@ cj4-mfd-element {
         }
         cj4-mfd-element #Mainframe #Electricity #MainDisplay #Chart .chartHeader {
           position: absolute;
-          left: 0;
+          left: 3px;
           width: 100%;
           height: 3%;
           font-size: calc( 1.95 * 1vh * var(--bodyHeightScale));
@@ -565,7 +565,6 @@ cj4-mfd-element {
           background-repeat: no-repeat;
           background-size: cover;
           color: white;
-          background-color: black !important;
           margin-top: 3%;
         }
         .night {

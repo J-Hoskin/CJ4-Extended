@@ -280,6 +280,7 @@ class CJ4_MFD extends BaseAirliners {
         this.map.setSymbol(CJ4_MapSymbol.AIRSPACES, (_dict.get(CJ4_PopupMenu_Key.MAP_SYMBOL_AIRSPACES) == "ON") ? true : false);
         this.map.setSymbol(CJ4_MapSymbol.NAVAIDS, (_dict.get(CJ4_PopupMenu_Key.MAP_SYMBOL_NAVAIDS) == "ON") ? true : false);
 
+        // Uses a space for ORIGIN chart menu names for easy implementation
         let chartSelection = _dict.get(CJ4_PopupMenu_Key.CHART_SELECTED);
         if (chartSelection === "AIRPORT ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 1);
@@ -297,20 +298,28 @@ class CJ4_MFD extends BaseAirliners {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 4);
             modeChanged = true;
         }
-        else if (chartSelection === "ARRIVAL") {
+        else if (chartSelection === "ANY CHART ") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 5);
             modeChanged = true;
         }
-        else if (chartSelection === "APPROACH") {
+        else if (chartSelection === "ARRIVAL") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 6);
             modeChanged = true;
         }
-        else if (chartSelection === "AIRPORT") {
+        else if (chartSelection === "APPROACH") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 7);
             modeChanged = true;
         }
-        else if (chartSelection === "DEPARTURE") {
+        else if (chartSelection === "AIRPORT") {
             SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 8);
+            modeChanged = true;
+        }
+        else if (chartSelection === "DEPARTURE") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 9);
+            modeChanged = true;
+        }
+        else if (chartSelection === "ANY CHART") {
+            SimVar.SetSimVarValue("L:SELECTED_AIRPORT_CHART", "number", 10);
             modeChanged = true;
         }
 
@@ -590,12 +599,12 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
     getSelectedAirportICAO(_chartTypeSelected) {
         // Get airport ICAO
         const flightPlanManager = this.gps.currFlightPlanManager;
-        if (_chartTypeSelected == 1 || _chartTypeSelected == 2 || _chartTypeSelected == 3 || _chartTypeSelected == 4) {
+        if (_chartTypeSelected == 1 || _chartTypeSelected == 2 || _chartTypeSelected == 3 || _chartTypeSelected == 4 || _chartTypeSelected == 5) {
             let origin = flightPlanManager.getOrigin();
             if (origin) {
                 return origin.ident;
             }
-        } else if (_chartTypeSelected == 5 || _chartTypeSelected == 6 || _chartTypeSelected == 7 || _chartTypeSelected == 8) {
+        } else if (_chartTypeSelected == 6 || _chartTypeSelected == 7 || _chartTypeSelected == 8 || _chartTypeSelected == 9 || _chartTypeSelected == 10) {
             let destination = flightPlanManager.getDestination();
             if (destination) {
                 return destination.ident;
@@ -606,17 +615,20 @@ class CJ4_ChartContainer extends NavSystemElementContainer {
     getChartFolder(_chartTypeSelected){
         // Folder info
         let folder = "Aerodrome";
-        if(_chartTypeSelected == 1 || _chartTypeSelected == 7){
+        if(_chartTypeSelected == 1 || _chartTypeSelected == 8){
             folder = "Aerodrome";
         }
-        else if(_chartTypeSelected == 2 || _chartTypeSelected == 8){
+        else if(_chartTypeSelected == 2 || _chartTypeSelected == 9){
             folder = "Departure";
         }
-        else if(_chartTypeSelected == 3 || _chartTypeSelected == 5){
+        else if(_chartTypeSelected == 3 || _chartTypeSelected == 6){
             folder = "Arrival";
         }
-        else if(_chartTypeSelected == 4 || _chartTypeSelected == 6){
+        else if(_chartTypeSelected == 4 || _chartTypeSelected == 7){
             folder = "Approach";
+        }
+        else if(_chartTypeSelected == 5 || _chartTypeSelected == 10){
+            folder = "Other";
         }
         return folder;
     }
