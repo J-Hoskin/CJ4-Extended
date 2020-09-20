@@ -252,8 +252,11 @@
       "path": "SimObjects/Airplanes/Asobo_CJ4/sound/Asobo_CJ4.PC.PCK",
       "size": 59812,
       "date": 142427734996952389
+    },
+    {
+      "path": "SimObjects/Airplanes/Asobo_CJ4/engines.CFG",
+      "size": 8789,
+      "date": 142427734996952399
     }
-
-
   ]
 }
