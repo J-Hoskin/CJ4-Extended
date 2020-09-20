@@ -57,14 +57,9 @@ The following steps need to be followed closely in order for the add-on to work.
 - Create a new folder with the exact ICAO name of the desired airport in the `html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts` folder
 - Create the folders: `Arrivals`, `Airport`, `Deperature`, `Approach`, `Other`
 - Drop your charts for the airport in the relevant folders. Images must be PNGs. The chart file name must be: `[ICAO]-[PAGE NUMBER]`. Example: `YPAD-1.png`. These page numbers allow you to easily navigate through multple charts in each chart folder. The `Other` folder can contain any charts such as apron charts.
-- Add to the layout.json file the path of the images you just added (if this charting feature is liked, this will be automated in future). Example:
-  ```
-  {
-    "path": "html_ui/Pages/VCockpit/Instruments/Airliners/CJ4/MFD/Charts/YPAD/Approach/YPAD-1.png",
-    "size": 568618,
-    "date": 132427734999577511
-  },
-  ```
+
+Run the `build.py` python script to load all of the new charts into the addon's layout.json automatically. Now you can start up Microsoft Flight Simulator 2020 and enjoy flying off navigational charts.
+
 ### Using airport charts
 - First set an origin and/or a destination in the FMS, or from the main flight menu.
 - Press the `Chart` button in the lower control panel to open the chart display
@@ -80,7 +75,7 @@ The following steps need to be followed closely in order for the add-on to work.
 
 ## Credits
 Thanks goes to:
-[Soberat](https://www.nexusmods.com/microsoftflightsimulator/mods/225) for RAT code
-[Vaporized_Butter](https://www.nexusmods.com/microsoftflightsimulator/mods/8) for fuel improvements
-[dga711](https://github.com/dga711/devtools-backend-refurb) for devtools which kept me barely sane
-[FlyByWire Team](https://github.com/flybywiresim) for trailblazing addon development
+- [Soberat](https://www.nexusmods.com/microsoftflightsimulator/mods/225) for RAT code
+- [Vaporized_Butter](https://www.nexusmods.com/microsoftflightsimulator/mods/8) for fuel improvements
+- [dga711](https://github.com/dga711/devtools-backend-refurb) for devtools which kept me barely sane
+- [FlyByWire Team](https://github.com/flybywiresim) for trailblazing addon development
