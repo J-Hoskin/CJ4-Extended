@@ -36,6 +36,7 @@ Installation requires that you place the "CJ4-Extended-[VERSION #]" folder into 
 
 ## Setting up and Using Airport Charts
 ![image](https://user-images.githubusercontent.com/48885195/93709529-2d25e580-fb82-11ea-821e-ecb2a48a5e72.png)
+![image](https://user-images.githubusercontent.com/48885195/93727376-40769680-fbfe-11ea-9bca-1caf3a6387c1.png)
 This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup. There are some charts included for Melbourne and Hobart in Australia. You can load the flight plans in the `other/Chart Flight Plans` directory to try the feature before setting it up on your own.
 
 ### Sourcing Charts
