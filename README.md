@@ -20,7 +20,7 @@ If you have knowledge around the systems in the CJ4 and would like to contribute
 - [Releases](https://github.com/J-Hoskin/CJ4-Extended/releases)
 
 ## Installation
-Installation requires that you place the "CJ4-Extended-[VERSION #]" folder into the "Community" folder of your MSFS2020 installation. The location of the "Community" folder depends on what platform you run MSFS2020 on. Potential directories include:
+Installation requires that you place the "CJ4-Extended" folder into the "Community" folder of your MSFS2020 installation. The location of the "Community" folder depends on what platform you run MSFS2020 on. Potential directories include:
 
 **Microsoft Store / Gamepass edition:**
 
