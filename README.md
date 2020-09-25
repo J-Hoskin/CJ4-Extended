@@ -1,12 +1,12 @@
 # CJ4 Extended
 ![image](https://user-images.githubusercontent.com/48885195/93709493-dae4c480-fb81-11ea-8fbc-919519f2bc1f.png)
 ## About
-This project extends upon the features of the Citation CJ4 aircraft in Microsoft Flight Simulator 2020. **This project is currently being merged with fspackages for the best CJ4 experience. Charting will remain here for the time being**
+This project extends upon the features of the Citation CJ4 aircraft in Microsoft Flight Simulator 2020. **This project is currently being merged with [fspackages](https://github.com/Working-Title-MSFS-Mods/fspackages/tree/main/src) for the best CJ4 experience. Charting will remain here for the time being.**
 
 **Current features**
 - Air and heat knob animation functionality (Pilot, Copilot, and Cabin Fan, Cockpit and Cabin Temperature, Climate Control)
 - Seatbelt lights and chime sounds
-- Static airport charting functionality (first of its kind?)
+- Static airport charting functionality (first of its kind)
 - Flight log FMS page (Take-off time, time en-route, landing time, fuel used)
 - FMS Perf Menu with `PERF` button functionality
 - Fixed FMS styling bugs
