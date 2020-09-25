@@ -1,7 +1,7 @@
 # CJ4 Extended
 ![image](https://user-images.githubusercontent.com/48885195/93709493-dae4c480-fb81-11ea-8fbc-919519f2bc1f.png)
 ## About
-This project extends upon the features of the Citation CJ4 aircraft in Microsoft Flight Simulator 2020. Access to technical documentation around the systems in the CJ4 are unfortunately restricted, and as such, the features added in add-on are not perfectly accurate. Instead, the focus is on fleshing out the flight experience.
+This project extends upon the features of the Citation CJ4 aircraft in Microsoft Flight Simulator 2020. **This project is currently being merged with fspackages for the best CJ4 experience. Charting will remain here for the time being**
 
 **Current features**
 - Air and heat knob animation functionality (Pilot, Copilot, and Cabin Fan, Cockpit and Cabin Temperature, Climate Control)
@@ -13,14 +13,8 @@ This project extends upon the features of the Citation CJ4 aircraft in Microsoft
 - UTC clock and RAT functionality on MFD and PFD
 - Significant fuel performance improvements
 
-If you have knowledge around the systems in the CJ4 and would like to contribute, please contact me on Discord at Hosky#6451. If you would like to contribute to development, feel free to submit a pull request. A list of features can be found in the 'Issues' tab.
-
-**Useful Links**
-- [Planned Features](https://github.com/J-Hoskin/CJ4-Extended/issues)
-- [Releases](https://github.com/J-Hoskin/CJ4-Extended/releases)
-
 ## Installation
-Installation requires that you place the "CJ4-Extended" folder into the "Community" folder of your MSFS2020 installation. The location of the "Community" folder depends on what platform you run MSFS2020 on. Potential directories include:
+Installation requires unzipping [CJ4-Extended.zip](https://github.com/J-Hoskin/CJ4-Extended/releases/tag/v1.0) and placing the `CJ4-Extended` folder into the `Community` folder of your MSFS2020 installation. The location of the `Community` folder depends on what platform you run MSFS2020 on. Potential directories include:
 
 **Microsoft Store / Gamepass edition:**
 
@@ -37,11 +31,11 @@ Installation requires that you place the "CJ4-Extended" folder into the "Communi
 ## Setting up and Using Airport Charts
 ![image](https://user-images.githubusercontent.com/48885195/93709529-2d25e580-fb82-11ea-821e-ecb2a48a5e72.png)
 ![image](https://user-images.githubusercontent.com/48885195/93727376-40769680-fbfe-11ea-9bca-1caf3a6387c1.png)
-This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is a very simple experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. However, it requires manual setup. There are some charts included for Melbourne and Hobart in Australia. You can load the flight plans in the `other/Chart Flight Plans` directory to try the feature before setting it up on your own.
+This add-on adds the ability to load airport charts onto the MFD of the CJ4. This is an experimental implementation which allows you to see airport details and get directions without leaving the cockpit, adding to the flight immersion. There are some charts included for Melbourne and Hobart in Australia. You can load the flight plans in the `other/Chart Flight Plans` directory to try the feature before setting it up on your own.
 
 ### Sourcing Charts
 
-As the feature uses PNG images for charts, you are free to source airport charts from any provider. An image size around 1166W x 1654H works well. A shorter height of X will not require scrolling. Greater widths are not recommended as there currently is no horizontal scrolling implemented.
+As the feature uses PNG images for charts, you are free to source airport charts from any provider.
 
 **Free and no signup**
 
